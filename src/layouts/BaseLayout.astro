@@ -15,6 +15,18 @@ const { title, description, canonical, schema } = Astro.props;
     <style>body { font-family: 'Inter', sans-serif; }</style>
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
     <title>{title}</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
   </head>
   <body class="relative min-h-screen bg-dark">
     <!-- Ambient Background Blobs -->

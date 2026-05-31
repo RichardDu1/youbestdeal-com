@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://findtheaiforthat.com/sitemap-index.xml
+Sitemap: https://youbestdeal.com/sitemap-index.xml
