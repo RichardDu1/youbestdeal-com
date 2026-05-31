@@ -1,47 +1,32 @@
 ---
-// Card.astro — Reusable card for tool listings, articles, categories
-export interface Props {
-  title: string;
-  description: string;
-  href: string;
-  image?: string;
-  tag?: string;
-  rating?: number;
-  price?: string;
-}
-
-const { title, description, href, image, tag, rating, price } = Astro.props;
+const { title, description, href, tag, rating, price, featured } = Astro.props;
 ---
-
-<a href={href} class="group block bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300">
-  {/* Image */}
-  {image ? (
-    <div class="aspect-video overflow-hidden bg-neutral">
-      <img
-        src={image}
-        alt={title}
-        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        loading="lazy"
-      />
+<a href={href} class={`group relative block p-[1px] rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary-500/10 ${featured ? 'md:col-span-2 md:row-span-2' : ''}`}>
+  <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+  
+  <div class="relative h-full bg-card/40 backdrop-blur-xl border border-white/5 group-hover:border-white/10 rounded-[23px] p-8 flex flex-col justify-between transition-colors duration-500">
+    <div class="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-bl-full filter blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+    
+    <div class="relative z-10">
+      <div class="flex justify-between items-start mb-8">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center border border-white/10 shadow-inner group-hover:scale-110 transition-transform duration-500">
+           <svg class="w-6 h-6 text-white/80 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+        </div>
+        {tag && (
+          <span class="px-3 py-1.5 text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 rounded-full group-hover:bg-primary-500/10 group-hover:text-primary-400 group-hover:border-primary-500/20 transition-colors">
+            {tag}
+          </span>
+        )}
+      </div>
+      <h3 class={`font-bold text-white tracking-tight mb-4 ${featured ? 'text-3xl lg:text-4xl' : 'text-xl'}`}>{title}</h3>
+      <p class="text-slate-400 leading-relaxed font-light text-sm md:text-base">{description}</p>
     </div>
-  ) : (
-    <div class="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-      <span class="text-3xl font-bold text-primary/30">{title.charAt(0)}</span>
-    </div>
-  )}
-
-  {/* Content */}
-  <div class="p-5">
-    <div class="flex items-center gap-2 mb-2">
-      {tag && <span class="text-xs font-medium text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">{tag}</span>}
-      {rating && (
-        <span class="text-xs font-medium text-muted ml-auto">★ {rating.toFixed(1)}</span>
-      )}
-    </div>
-    <h3 class="font-semibold text-text mb-1 group-hover:text-primary transition-colors line-clamp-1">{title}</h3>
-    <p class="text-sm text-muted line-clamp-2 mb-3">{description}</p>
-    {price !== undefined && (
-      <p class="text-sm font-semibold text-primary">{price === '0' || price === 'Free' ? 'Free' : `$${price}`}</p>
+    
+    {(rating || price) && (
+      <div class="relative z-10 mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-sm">
+        {rating && <span class="flex items-center gap-1.5 text-yellow-500 font-medium bg-yellow-500/10 px-2 py-1 rounded-md"><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg> {rating}</span>}
+        {price && <span class="text-white font-medium px-2 py-1 bg-white/10 rounded-md">{price}</span>}
+      </div>
     )}
   </div>
 </a>

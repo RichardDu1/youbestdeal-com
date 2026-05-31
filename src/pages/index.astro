@@ -1,6 +1,4 @@
 ---
-// Root path — returns 200 with canonical pointing to /en/ (CRITICAL: no redirect)
-// Per BUILD_GUIDE.md Section V
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Card from '../components/Card.astro';
@@ -13,85 +11,32 @@ const pageDescription = 'Never pay full price again. Discover the best AppSumo l
   title={pageTitle}
   description={pageDescription}
   canonical="https://youbestdeal.com/en/"
-  schema={{
-    type: 'WebSite',
-    data: { description: pageDescription },
-  }}
+  schema={{ type: 'WebSite', data: { description: pageDescription } }}
 >
-  <Hero
-    title="Unlock Exclusive Lifetime Software Deals"
-    subtitle="Save up to 90% on premium SaaS with our curated LTDs."
-    cta={{ label: 'Explore Tools', href: '/en/categories/' }}
-    ctaSecondary={{ label: 'Latest Reviews', href: '/en/latest/' }}
-  />
+  <Hero title="Unlock Exclusive Lifetime Software Deals" subtitle="Save up to 90% on premium SaaS with our curated LTDs." />
 
-  <!-- Featured Categories -->
-  <section class="container py-16">
-    <h2 class="text-2xl font-bold mb-8 text-center">Popular Categories</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <Card
-        title="LTDs"
-        description="Lifetime Deals ending soon"
-        href="/en/categories/writing/"
-        tag="Popular"
-      />
-      <Card
-        title="Marketing"
-        description="Discounted SEO Tools"
-        href="/en/categories/image/"
-        tag="Trending"
-      />
-      <Card
-        title="Design"
-        description="UI/UX Tools on Sale"
-        href="/en/categories/coding/"
-        tag="Essential"
-      />
-      <Card
-        title="Hosting"
-        description="Cheap Web Hosting"
-        href="/en/categories/productivity/"
-        tag="New"
-      />
+  <section class="container mx-auto px-6 py-8 animate-fade-in-up" style="animation-delay: 0.2s;">
+    <h2 class="text-xl md:text-2xl font-bold mb-10 text-white tracking-tight flex items-center gap-3">
+      <span class="w-1.5 h-6 bg-primary-500 rounded-full"></span>
+      Popular Categories
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-fr">
+      <Card title="LTDs" description="Lifetime Deals ending soon" href="/en/categories/c1/" tag="Trending" featured={true} />
+      <Card title="Marketing" description="Discounted SEO Tools" href="/en/categories/c2/" tag="New" />
+      <Card title="Design" description="UI/UX Tools on Sale" href="/en/categories/c3/" />
+      <Card title="Hosting" description="Cheap Web Hosting" href="/en/categories/c4/" />
     </div>
   </section>
 
-  <!-- Latest Reviews -->
-  <section class="bg-neutral py-16">
-    <div class="container">
-      <h2 class="text-2xl font-bold mb-8 text-center">Latest Updates</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card
-          title="SurferSEO 90% Off Coupon"
-          description="Is ChatGPT still the best AI assistant? Our honest review after 2+ years of daily use"
-          href="/en/reviews/chatgpt/"
-          rating={4.5}
-          price="Free"
-        />
-        <Card
-          title="Canva Pro Lifetime Deal"
-          description="Side-by-side comparison of the top two AI assistants — which one wins?"
-          href="/en/compare/claude-vs-chatgpt/"
-          rating={4.7}
-          price="Free"
-        />
-        <Card
-          title="Hostinger Black Friday"
-          description="The latest Midjourney update raises the bar for AI image generation again"
-          href="/en/reviews/midjourney-v7/"
-          rating={4.8}
-          price="10"
-        />
-      </div>
+  <section class="container mx-auto px-6 py-16 animate-fade-in-up" style="animation-delay: 0.4s;">
+    <h2 class="text-xl md:text-2xl font-bold mb-10 text-white tracking-tight flex items-center gap-3">
+      <span class="w-1.5 h-6 bg-purple-500 rounded-full"></span>
+      Latest Updates
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Card title="SurferSEO 90% Off Coupon" description="Read our latest in-depth review and analysis for 2026." href="/en/reviews/1/" rating={4.9} price="Verified" />
+      <Card title="Canva Pro Lifetime Deal" description="A comprehensive breakdown of features, pricing, and pros/cons." href="/en/reviews/2/" rating={4.7} price="Top Choice" />
+      <Card title="Hostinger Black Friday" description="Everything you need to know before making a decision." href="/en/reviews/3/" rating={4.5} price="Updated" />
     </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="container py-16 text-center">
-    <h2 class="text-2xl font-bold mb-4">Don't Know Which AI Tool to Pick?</h2>
-    <p class="text-muted mb-6 max-w-xl mx-auto">Use our AI Tool Finder to get personalized recommendations based on your needs.</p>
-    <a href="/en/finder/" class="inline-flex items-center px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors">
-      Try the AI Tool Finder →
-    </a>
   </section>
 </BaseLayout>

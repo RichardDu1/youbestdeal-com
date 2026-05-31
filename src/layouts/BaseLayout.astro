@@ -1,71 +1,46 @@
 ---
-// BaseLayout.astro — HTML shell, used by all pages
-import SEOHead from '../components/SEOHead.astro';
-import SchemaMarkup from '../components/SchemaMarkup.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
-
-export interface Props {
-  title: string;
-  description: string;
-  canonical?: string;
-  ogImage?: string;
-  ogType?: 'website' | 'article';
-  noindex?: boolean;
-  schema?: { type: string; data: Record<string, any> };
-}
-
-const { title, description, canonical, ogImage, ogType, noindex, schema } = Astro.props;
+const { title, description, canonical, schema } = Astro.props;
 ---
-
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark antialiased overflow-x-hidden selection:bg-primary-500/30">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-
-    <!-- SEO Head -->
-    <SEOHead
-      title={title}
-      description={description}
-      canonical={canonical}
-      ogImage={ogImage}
-      ogType={ogType}
-      noindex={noindex}
-    />
-
-    <!-- Schema Markup -->
-    {schema && <SchemaMarkup type={schema.type} data={schema.data} />}
-
-    <!-- Fonts: self-hosted Inter -->
-    <link rel="preload" href="/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="canonical" href={canonical} />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+    <title>{title}</title>
   </head>
-  <body class="flex flex-col min-h-screen">
-    <Header />
-    <main class="flex-1">
+  <body class="relative min-h-screen bg-dark">
+    <!-- Ambient Background Blobs -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+      <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary-500/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
+      <div class="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-purple-500/10 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
+      <div class="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-blue-500/10 rounded-full mix-blend-screen filter blur-[120px] animate-blob animation-delay-4000"></div>
+    </div>
+
+    <header class="fixed top-0 w-full z-50 bg-dark/60 backdrop-blur-xl border-b border-white/5 supports-[backdrop-filter]:bg-dark/40">
+      <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="text-xl font-extrabold tracking-tight flex items-center gap-2">
+          <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-primary-500 to-primary-600 shadow-lg shadow-primary-500/20"></div>
+          {title.split('—')[0].trim()}
+        </a>
+        <nav class="hidden md:flex gap-8 text-sm font-medium text-slate-400">
+          <a href="/en/categories/" class="hover:text-white transition-colors">Categories</a>
+          <a href="/en/latest/" class="hover:text-white transition-colors">Latest</a>
+        </nav>
+      </div>
+    </header>
+    
+    <main class="pt-24 pb-16">
       <slot />
     </main>
-    <Footer />
+    
+    <footer class="border-t border-white/5 py-12 text-center text-sm text-slate-600 bg-black/20">
+      <p>&copy; {new Date().getFullYear()} {title.split('—')[0].trim()}. All rights reserved.</p>
+    </footer>
   </body>
 </html>
-
-<style>
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('/fonts/inter-regular.woff2') format('woff2');
-  }
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('/fonts/inter-700.woff2') format('woff2');
-  }
-</style>
