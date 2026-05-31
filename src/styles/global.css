@@ -1,43 +1,36 @@
 @import "tailwindcss";
 
-/* === TRUE BESPOKE REDESIGN: YOU BEST DEAL ===
-   Aesthetic: High-Conversion E-commerce / Urgency
-   Vibe: AppSumo, Excitement, FOMO, Crimson & Gold === */
-
 @theme {
-  --color-primary: #DC2626; /* Crimson Red for Urgency */
-  --color-primary-dark: #B91C1C;
-  --color-accent: #10B981;  /* Emerald for "Claim Deal" Success */
-  --color-warning: #F59E0B; /* Gold for FOMO tags */
+  --color-primary-500: #ec4899;
+  --color-primary-600: #db2777;
+  --color-dark: #050505;
+  --color-card: #111111;
   
-  --color-surface: #F8FAFC; /* Light slate bg */
-  --color-neutral: #FFFFFF;
-  --color-border: #E2E8F0;
-  --color-muted: #64748B;
-  --color-text: #0F172A;
+  --animate-blob: blob 10s infinite;
+  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
-  /* Friendly, round e-commerce typography */
-  --font-sans: 'Poppins', 'Inter', system-ui, sans-serif;
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); opacity: 0.2; }
+    33% { transform: translate(40px, -60px) scale(1.1); opacity: 0.3; }
+    66% { transform: translate(-30px, 30px) scale(0.9); opacity: 0.1; }
+    100% { transform: translate(0px, 0px) scale(1); opacity: 0.2; }
+  }
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-body { 
-  font-family: var(--font-sans); 
-  color: var(--color-text); 
-  background-color: var(--color-surface); 
-  line-height: 1.5;
+@utility animation-delay-2000 {
+  animation-delay: 2s;
 }
 
-h1, h2, h3, h4 { 
-  font-weight: 800;
-  letter-spacing: -0.02em;
+@utility animation-delay-4000 {
+  animation-delay: 4s;
 }
 
-.deal-card {
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.deal-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+body {
+  background-color: var(--color-dark);
+  color: #e2e8f0;
 }
