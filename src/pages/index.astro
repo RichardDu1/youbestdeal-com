@@ -5,51 +5,51 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Card from '../components/Card.astro';
 
-const pageTitle = 'Find the AI For That — Discover the Best AI Tools for Every Task (2026)';
-const pageDescription = 'Honest reviews and detailed comparisons of the best AI tools for writing, image generation, coding, productivity, and more. Find the right AI for every task.';
+const pageTitle = 'You Best Deal — Lifetime Deals & Software Coupons';
+const pageDescription = 'Never pay full price again. Discover the best AppSumo lifetime deals (LTDs) and SaaS coupons.';
 ---
 
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
-  canonical="https://findtheaiforthat.com/en/"
+  canonical="https://youbestdeal.com/en/"
   schema={{
     type: 'WebSite',
     data: { description: pageDescription },
   }}
 >
   <Hero
-    title="Find the Perfect AI Tool for Any Task"
-    subtitle="Discover, compare, and choose from hundreds of AI tools. Honest reviews, no hype."
+    title="Unlock Exclusive Lifetime Software Deals"
+    subtitle="Save up to 90% on premium SaaS with our curated LTDs."
     cta={{ label: 'Explore Tools', href: '/en/categories/' }}
     ctaSecondary={{ label: 'Latest Reviews', href: '/en/latest/' }}
   />
 
   <!-- Featured Categories -->
   <section class="container py-16">
-    <h2 class="text-2xl font-bold mb-8 text-center">Popular AI Tool Categories</h2>
+    <h2 class="text-2xl font-bold mb-8 text-center">Popular Categories</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <Card
-        title="AI Writing Tools"
-        description="Generate articles, emails, social posts, and more with the best AI writers"
+        title="LTDs"
+        description="Lifetime Deals ending soon"
         href="/en/categories/writing/"
         tag="Popular"
       />
       <Card
-        title="AI Image Generators"
-        description="Create stunning visuals from text prompts — art, logos, photos, illustrations"
+        title="Marketing"
+        description="Discounted SEO Tools"
         href="/en/categories/image/"
         tag="Trending"
       />
       <Card
-        title="AI Coding Assistants"
-        description="Write code faster with AI-powered autocomplete, refactoring, and debugging"
+        title="Design"
+        description="UI/UX Tools on Sale"
         href="/en/categories/coding/"
         tag="Essential"
       />
       <Card
-        title="AI Productivity"
-        description="Automate workflows, summarize meetings, organize notes with AI"
+        title="Hosting"
+        description="Cheap Web Hosting"
         href="/en/categories/productivity/"
         tag="New"
       />
@@ -59,24 +59,24 @@ const pageDescription = 'Honest reviews and detailed comparisons of the best AI 
   <!-- Latest Reviews -->
   <section class="bg-neutral py-16">
     <div class="container">
-      <h2 class="text-2xl font-bold mb-8 text-center">Latest AI Tool Reviews</h2>
+      <h2 class="text-2xl font-bold mb-8 text-center">Latest Updates</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card
-          title="ChatGPT Review (2026)"
+          title="SurferSEO 90% Off Coupon"
           description="Is ChatGPT still the best AI assistant? Our honest review after 2+ years of daily use"
           href="/en/reviews/chatgpt/"
           rating={4.5}
           price="Free"
         />
         <Card
-          title="Claude vs ChatGPT (2026)"
+          title="Canva Pro Lifetime Deal"
           description="Side-by-side comparison of the top two AI assistants — which one wins?"
           href="/en/compare/claude-vs-chatgpt/"
           rating={4.7}
           price="Free"
         />
         <Card
-          title="Midjourney V7 Review"
+          title="Hostinger Black Friday"
           description="The latest Midjourney update raises the bar for AI image generation again"
           href="/en/reviews/midjourney-v7/"
           rating={4.8}
