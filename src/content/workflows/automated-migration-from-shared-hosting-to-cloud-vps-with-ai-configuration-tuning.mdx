@@ -1,0 +1,113 @@
+---
+title: "Automated Migration from Shared Hosting to Cloud VPS with AI Configuration Tuning"
+description: "Migrate your website from shared hosting to a cloud VPS with automated scripts and AI-driven performance tuning. This guide covers server setup, data transfer, and optimization using real tools like SpinupWP, RunCloud, and AI config assistants."
+targetRole: ["web-developer"]
+targetIntent: ["migrate-hosting"]
+difficulty: "Intermediate"
+setupTime: "2-3 Hours"
+costEstimate: "$10 - $30/mo"
+roi: "Saves 10+ hours per migration and improves site speed by 40%"
+toolsUsed: ["spinupwp","runcloud","chatgpt"]
+---
+
+## Overview
+
+This workflow automates the migration from shared hosting to a cloud VPS (e.g., DigitalOcean, Linode, Vultr) and uses AI to tune server configuration for optimal performance. You'll use server management panels and AI assistants to handle the heavy lifting.
+
+## Prerequisites
+
+- Access to your current shared hosting control panel (cPanel, Plesk, etc.)
+- A cloud VPS account (DigitalOcean, Linode, or Vultr)
+- Domain name access
+- Basic command-line knowledge
+
+## Step 1: Provision a Cloud VPS
+
+1. Sign up for a cloud provider (e.g., DigitalOcean).
+2. Create a droplet with Ubuntu 22.04 LTS, at least 2GB RAM.
+3. Note the server IP and root password.
+
+## Step 2: Install a Server Management Panel
+
+Use **SpinupWP** or **RunCloud** to automate server setup and management.
+
+### Option A: SpinupWP
+
+1. Create a SpinupWP account and add your server IP.
+2. SpinupWP will install Nginx, PHP, MySQL, and Redis automatically.
+3. Configure SSH keys for secure access.
+
+### Option B: RunCloud
+
+1. Install RunCloud agent on your VPS via SSH:
+   ```bash
+   curl -fsSL https://runcloud.io/install | bash
+   ```
+2. Connect your server to RunCloud dashboard.
+3. Choose web server (Nginx) and PHP version.
+
+## Step 3: Backup Your Shared Hosting Site
+
+1. Use cPanel's backup tool or manually download:
+   - Website files (via FTP or cPanel File Manager)
+   - Database (phpMyAdmin export as SQL)
+2. Store backups locally or in cloud storage.
+
+## Step 4: Transfer Files and Database
+
+### Using SpinupWP
+
+1. In SpinupWP, create a new site and point it to your domain.
+2. Use the built-in migration tool to import files and database from a zip or URL.
+3. Alternatively, use rsync:
+   ```bash
+   rsync -avz --progress user@oldserver:/path/to/public_html/ /var/www/domain/
+   ```
+
+### Using RunCloud
+
+1. Create a new web application in RunCloud.
+2. Upload files via SFTP or use the RunCloud file manager.
+3. Import database via phpMyAdmin or command line:
+   ```bash
+   mysql -u username -p newdatabase < backup.sql
+   ```
+
+## Step 5: Configure Domain and SSL
+
+1. Point your domain's A record to the new VPS IP.
+2. In SpinupWP/RunCloud, enable Let's Encrypt SSL for free HTTPS.
+3. Wait for DNS propagation (up to 24 hours).
+
+## Step 6: AI Configuration Tuning
+
+Use **ChatGPT** or **Claude** to generate optimized server configs.
+
+### Example Prompt:
+
+"I have a WordPress site on a 2GB RAM VPS with Nginx, PHP 8.1, and MySQL. Generate an optimized Nginx config for high traffic, including caching, gzip, and security headers. Also suggest PHP-FPM settings and MySQL tuning."
+
+1. Copy the AI-generated configs.
+2. Apply them via SSH:
+   - Nginx: edit `/etc/nginx/sites-available/domain`
+   - PHP: edit `/etc/php/8.1/fpm/pool.d/www.conf`
+   - MySQL: edit `/etc/mysql/my.cnf`
+3. Restart services:
+   ```bash
+   sudo systemctl restart nginx php8.1-fpm mysql
+   ```
+
+## Step 7: Test and Verify
+
+1. Visit your domain to ensure the site loads.
+2. Check for broken links or missing assets.
+3. Run a speed test (GTmetrix, Pingdom).
+4. Monitor server resources with `htop` or SpinupWP/RunCloud dashboards.
+
+## Step 8: Cancel Shared Hosting
+
+After confirming everything works, cancel your old shared hosting plan.
+
+## Conclusion
+
+You've successfully migrated to a cloud VPS with automated tools and AI-tuned performance. Enjoy faster load times, better scalability, and full control.

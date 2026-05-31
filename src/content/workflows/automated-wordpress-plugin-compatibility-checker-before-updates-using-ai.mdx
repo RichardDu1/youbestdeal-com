@@ -1,0 +1,65 @@
+---
+title: "Automated WordPress Plugin Compatibility Checker Before Updates Using AI"
+description: "Use AI to automatically scan your WordPress plugins for compatibility issues before updating, preventing site breakage and saving hours of manual testing."
+targetRole: ["wordpress-admin"]
+targetIntent: ["avoid-breakage"]
+difficulty: "Intermediate"
+setupTime: "30 Minutes"
+costEstimate: "$0 - $20/mo"
+roi: "Saves 10 hours/week"
+toolsUsed: ["wp-plugin-checker","make.com","slack"]
+---
+
+## Overview
+
+Updating WordPress plugins can break your site if compatibility issues arise. This workflow uses AI to automatically check plugin compatibility before updates, alerting you to potential problems. You'll set up an automated system that monitors plugin updates, runs compatibility checks using AI, and notifies you via Slack.
+
+## Prerequisites
+
+- WordPress admin access
+- A Make.com account (free tier available)
+- A Slack workspace (free)
+- API key for WP Plugin Checker (free)
+
+## Step 1: Set Up WP Plugin Checker
+
+1. Install and activate the **WP Plugin Checker** plugin on your WordPress site.
+2. Go to **Settings > WP Plugin Checker** and generate an API key.
+3. Configure the plugin to scan for compatibility with your WordPress version and other plugins.
+
+## Step 2: Create a Make.com Scenario
+
+1. Log in to Make.com and create a new scenario.
+2. Add a **RSS** module to monitor the WordPress plugin update feed: `https://plugins.trac.wordpress.org/plugins.rss`.
+3. Set the module to check every hour.
+
+## Step 3: Filter for Installed Plugins
+
+1. Add a **Text Parser** module to extract the plugin slug from the RSS item title.
+2. Add a **HTTP** module to call the WP Plugin Checker API: `GET https://your-site.com/wp-json/wp-plugin-checker/v1/check?plugin={slug}`.
+3. Parse the JSON response to get compatibility status.
+
+## Step 4: AI Analysis (Optional)
+
+1. Add an **OpenAI** module (or other AI) to analyze the compatibility report and summarize risks.
+2. Prompt: "Analyze this plugin compatibility report and highlight any critical issues that could break the site: {{report}}"
+
+## Step 5: Send Notification
+
+1. Add a **Slack** module to send a message to your #plugin-updates channel.
+2. Include the plugin name, compatibility status, and AI summary.
+
+## Step 6: Test and Activate
+
+1. Run the scenario once to test.
+2. Activate the scenario to run automatically.
+
+## ROI
+
+- **Time saved**: 10 hours/week (no manual testing)
+- **Cost**: $0 for WP Plugin Checker (free tier), $0 for Make.com (free tier), $0 for Slack (free)
+- **Risk reduction**: Prevents site breakage, saves potential revenue loss.
+
+## Conclusion
+
+This automated workflow ensures you never update a plugin blindly. With AI-powered compatibility checks, you can update with confidence.

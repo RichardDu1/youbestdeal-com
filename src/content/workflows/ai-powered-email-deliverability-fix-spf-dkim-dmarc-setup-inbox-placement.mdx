@@ -1,0 +1,53 @@
+---
+title: "AI-Powered Email Deliverability Fix: SPF/DKIM/DMARC Setup & Inbox Placement"
+description: "A step-by-step guide for email marketers to diagnose and fix email authentication issues using AI tools, ensuring higher inbox placement and lower bounce rates."
+targetRole: ["email-marketer"]
+targetIntent: ["improve-deliverability"]
+difficulty: "Intermediate"
+setupTime: "30 Minutes"
+costEstimate: "$0 - $20/mo"
+roi: "Saves 10 hours/week and reduces bounce rate by 80%"
+toolsUsed: ["mailtester-ai","emaillistverify"]
+---
+
+## Step 1: Diagnose Your Current Deliverability
+
+Use **MailTester.AI** to get a free, instant analysis of your email authentication. Forward a test email to your unique test address provided by MailTester.AI. Within 30 seconds, you'll receive a report showing:
+- **SPF status** (Pass/Fail)
+- **DKIM status** (Pass/Fail)
+- **DMARC status** (Pass/Fail)
+- **Spam score** and content issues
+
+## Step 2: Fix SPF Record
+
+If SPF fails, generate a correct SPF record using MailTester.AI's SPF generator. Typically, it looks like:
+```
+v=spf1 include:_spf.google.com ~all
+```
+Add this as a TXT record in your domain's DNS settings.
+
+## Step 3: Fix DKIM Record
+
+If DKIM fails, generate a DKIM key pair using your email provider (e.g., Google Workspace, SendGrid). Then add the public key as a TXT record in your DNS. MailTester.AI can validate the record after you add it.
+
+## Step 4: Set Up DMARC Policy
+
+Create a DMARC record to instruct receivers how to handle unauthenticated emails. Use MailTester.AI's DMARC generator. Example:
+```
+v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com
+```
+Add as a TXT record with name `_dmarc.yourdomain.com`.
+
+## Step 5: Verify and Clean Email List
+
+Use **EmailListVerify** to remove invalid emails, spam traps, and hard bounces. Upload your list and run verification. This reduces bounce rates and protects your sender reputation.
+
+## Step 6: Test Inbox Placement
+
+Send a test campaign to MailTester.AI's test address again to confirm all authentication passes. Also use EmailListVerify's spam test to check if your email lands in inbox vs spam.
+
+## Step 7: Monitor and Maintain
+
+Regularly re-check your DNS records and list hygiene. Set up DMARC aggregate reports to monitor authentication failures.
+
+**Pro Tip:** Combine these tools for a lifetime deal approach. MailTester.AI is free; EmailListVerify offers pay-as-you-go or monthly plans. The ROI is massive: fewer bounces, higher open rates, and better sender reputation.

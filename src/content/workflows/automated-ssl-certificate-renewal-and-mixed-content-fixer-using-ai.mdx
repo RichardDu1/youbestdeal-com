@@ -1,0 +1,96 @@
+---
+title: "Automated SSL Certificate Renewal and Mixed Content Fixer Using AI"
+description: "Eliminate SSL expiry outages and mixed content warnings with AI-driven automation. This guide shows webmasters how to set up predictive certificate renewal and automatic mixed content detection using real AI tools."
+targetRole: ["webmaster"]
+targetIntent: ["maintain-security"]
+difficulty: "Intermediate"
+setupTime: "2 Hours"
+costEstimate: "$0 - $30/mo"
+roi: "Saves 5 hours/month and prevents costly downtime"
+toolsUsed: ["cert-manager","ssl-labs","lets-encrypt"]
+---
+
+## Automated SSL Certificate Renewal and Mixed Content Fixer Using AI
+
+### Overview
+SSL certificate expiration and mixed content warnings are common headaches for webmasters. This workflow uses AI-powered tools to automatically discover certificates, predict expiration, trigger renewals, and scan for mixed content issues.
+
+### Prerequisites
+- A web server (Apache, Nginx, or cloud-hosted)
+- Domain with DNS access
+- Basic command-line knowledge
+
+### Step 1: Set Up Automated Certificate Discovery and Renewal
+Use **Cert-Manager** (Kubernetes) or **Let's Encrypt** with **Certbot** for non-K8s environments.
+
+#### For Kubernetes:
+1. Install Cert-Manager via Helm:
+   ```bash
+   helm repo add jetstack https://charts.jetstack.io
+   helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.0 --set installCRDs=true
+   ```
+2. Create a ClusterIssuer for Let's Encrypt:
+   ```yaml
+   apiVersion: cert-manager.io/v1
+   kind: ClusterIssuer
+   metadata:
+     name: letsencrypt-prod
+   spec:
+     acme:
+       server: https://acme-v02.api.letsencrypt.org/directory
+       email: your-email@example.com
+       privateKeySecretRef:
+         name: letsencrypt-prod
+       solvers:
+       - http01:
+           ingress:
+             class: nginx
+   ```
+3. Annotate your Ingress to auto-renew:
+   ```yaml
+   metadata:
+     annotations:
+       cert-manager.io/cluster-issuer: letsencrypt-prod
+   ```
+
+#### For Non-Kubernetes:
+- Install Certbot and run:
+  ```bash
+  sudo certbot --nginx -d yourdomain.com
+  ```
+- Set up a cron job for auto-renewal:
+  ```bash
+  0 0 * * * /usr/bin/certbot renew --quiet
+  ```
+
+### Step 2: AI-Powered Certificate Monitoring
+Use **SSL Labs** API or **Caddy** with AI plugins to monitor certificate health.
+
+- **SSL Labs**: Schedule daily checks via their API (free tier).
+- **Caddy**: Built-in auto-renewal and AI-driven alerting.
+
+### Step 3: Detect and Fix Mixed Content with AI
+Mixed content occurs when HTTPS pages load HTTP resources. Use **SSL Labs** or **Sucuri** to scan.
+
+#### Using SSL Labs:
+1. Go to [SSL Labs](https://www.ssllabs.com/ssltest/).
+2. Enter your domain and run the test.
+3. Review the "Mixed Content" section.
+
+#### Automated Fix with AI Tools:
+- **Sucuri** (paid) offers automatic mixed content remediation.
+- **Cloudflare** (free plan) can rewrite HTTP to HTTPS automatically.
+
+### Step 4: Set Up Alerts and Notifications
+Use **UptimeRobot** or **Pingdom** to monitor SSL expiry and mixed content.
+
+- **UptimeRobot**: Free SSL monitoring with email alerts.
+- **Pingdom**: Paid but includes mixed content checks.
+
+### Step 5: Verify and Maintain
+- Test renewal: `sudo certbot renew --dry-run`
+- Check mixed content: Use browser DevTools (Console tab).
+- Schedule monthly AI scans.
+
+### Conclusion
+By automating SSL renewal and mixed content fixes, you ensure uninterrupted security and user trust. The initial setup takes 2 hours, but saves countless hours of manual monitoring and prevents costly outages.

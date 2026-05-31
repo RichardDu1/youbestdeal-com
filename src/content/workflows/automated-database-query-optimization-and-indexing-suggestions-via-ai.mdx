@@ -1,0 +1,73 @@
+---
+title: "Automated Database Query Optimization and Indexing Suggestions via AI"
+description: "Leverage AI-powered tools to analyze slow SQL queries, get indexing recommendations, and rewrite queries for optimal performance—saving hours of manual tuning."
+targetRole: ["database-admin"]
+targetIntent: ["optimize-queries"]
+difficulty: "Intermediate"
+setupTime: "30 Minutes"
+costEstimate: "$0 - $20/mo"
+roi: "Saves 10 hours/week"
+toolsUsed: ["sqlai-ai","eversql"]
+---
+
+## Overview
+
+Database query optimization is critical for performance, but manual tuning is time-consuming. This workflow uses AI to automatically analyze slow queries, suggest indexes, and rewrite SQL for better execution plans. You'll reduce query latency and improve application responsiveness.
+
+## Prerequisites
+
+- Access to your database logs or a query profiling tool (e.g., slow query log, pg_stat_statements, or built-in monitoring).
+- Basic familiarity with SQL and database indexing concepts.
+
+## Step 1: Capture Slow Queries
+
+Enable slow query logging in your database. For MySQL:
+```sql
+SET GLOBAL slow_query_log = 'ON';
+SET GLOBAL long_query_time = 2; -- captures queries >2 seconds
+```
+For PostgreSQL, use `pg_stat_statements`:
+```sql
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+```
+Export the top slow queries to a file or copy them manually.
+
+## Step 2: Use SQLAI.ai to Analyze and Rewrite Queries
+
+1. Go to [SQLAI.ai](https://sqlai.ai) and sign up (free tier available).
+2. Paste a slow query into the SQL Optimizer.
+3. Click "Optimize" to get an AI-rewritten version with a diff comparison.
+4. Review the suggested changes (e.g., join order, predicate placement, subquery elimination).
+5. Apply the optimized query to your database and test performance.
+
+**Pro Tip:** SQLAI.ai also explains why the rewrite is faster, helping you learn optimization patterns.
+
+## Step 3: Get Indexing Suggestions with EverSQL
+
+1. Visit [EverSQL](https://www.eversql.com) and create a free account.
+2. Paste the same slow query into the analyzer.
+3. EverSQL will recommend indexes (e.g., composite indexes, covering indexes) and provide DDL statements.
+4. Review the suggestions and apply them in a staging environment first.
+5. Measure the query execution time before and after.
+
+**Example output:**
+```sql
+CREATE INDEX idx_orders_customer_date ON orders (customer_id, order_date);
+```
+
+## Step 4: Automate the Workflow (Optional)
+
+For continuous optimization, integrate SQLAI.ai or EverSQL via API into your CI/CD pipeline. Both tools offer APIs to automatically analyze queries from your code repository or monitoring system.
+
+- **SQLAI.ai API:** Send queries via POST request and receive optimized SQL.
+- **EverSQL API:** Get indexing recommendations programmatically.
+
+## Step 5: Validate and Monitor
+
+After applying changes, monitor query performance using your database's built-in tools (e.g., `EXPLAIN ANALYZE`, slow query log). Compare before/after metrics to confirm improvement.
+
+## Conclusion
+
+By combining SQLAI.ai for query rewriting and EverSQL for indexing suggestions, you can automate the most tedious parts of database optimization. This workflow reduces manual effort by 90% and ensures your database runs efficiently.
+
+**Lifetime Deal Alert:** Check YouBestDeal.com for lifetime deals on SQLAI.ai and EverSQL—one-time payment vs. monthly subscriptions saves hundreds over time.

@@ -1,0 +1,70 @@
+---
+title: "Automated Multi-Cloud Cost Comparison and Migration Recommendations Using AI"
+description: "Leverage AI-powered tools to automatically compare costs across AWS, Azure, and GCP, and receive intelligent migration recommendations to optimize your cloud spend."
+targetRole: ["cloud-architect"]
+targetIntent: ["compare-costs"]
+difficulty: "Intermediate"
+setupTime: "2 hours"
+costEstimate: "$0 - $50/mo (free tiers available)"
+roi: "Saves 20+ hours/month and reduces cloud costs by 30% on average"
+toolsUsed: ["matilda-cloud","spot-by-netapp","harness-cloud-cost-management","cloudhealth-by-vmware","cast-ai"]
+---
+
+## Automated Multi-Cloud Cost Comparison and Migration Recommendations Using AI
+
+This guide walks you through setting up an automated workflow to compare costs across AWS, Azure, and GCP, and get AI-driven migration recommendations. You'll use five powerful tools: Matilda Cloud, Spot by NetApp, Harness Cloud Cost Management, CloudHealth by VMware, and Cast AI.
+
+### Prerequisites
+- Cloud accounts with AWS, Azure, and GCP (free tiers work)
+- Admin access to each cloud provider
+- Basic understanding of cloud services and pricing
+
+### Step 1: Set Up Matilda Cloud for Discovery and Assessment
+Matilda Cloud provides AI-powered discovery and assessment across multi-cloud environments.
+1. Sign up at [Matilda Cloud](https://www.matildacloud.com) (free tier available).
+2. Connect your AWS, Azure, and GCP accounts using read-only IAM roles/service principals.
+3. Run the discovery scan to inventory all resources (VMs, storage, databases, etc.).
+4. View the cost breakdown per cloud provider and per service.
+
+### Step 2: Enable Spot by NetApp for Compute Optimization
+Spot by NetApp optimizes compute costs using AI, especially for spot/preemptible instances.
+1. Create an account at [Spot by NetApp](https://spot.io) (free trial).
+2. Connect your cloud accounts and enable the Elastigroup feature.
+3. Configure policies to automatically use spot instances where possible.
+4. Review the cost savings dashboard to see potential savings.
+
+### Step 3: Integrate Harness Cloud Cost Management for FinOps Insights
+Harness provides comprehensive FinOps with AI recommendations.
+1. Sign up at [Harness](https://www.harness.io) (free tier for up to 250k resources).
+2. Connect your cloud accounts and enable cost visibility.
+3. Use the AI-driven recommendations to rightsize instances, delete idle resources, and purchase reserved instances.
+4. Set up budgets and alerts to monitor spend.
+
+### Step 4: Use CloudHealth by VMware for Multi-Cloud Governance
+CloudHealth offers governance and optimization across clouds.
+1. Register at [CloudHealth](https://www.cloudhealthtech.com) (free trial).
+2. Connect your AWS, Azure, and GCP accounts.
+3. Create policies for cost governance (e.g., tag enforcement, instance limits).
+4. Generate reports comparing costs across providers and identifying migration opportunities.
+
+### Step 5: Leverage Cast AI for Kubernetes and Serverless Optimization
+Cast AI automatically rightsizes Kubernetes clusters and serverless functions.
+1. Sign up at [Cast AI](https://cast.ai) (free tier for clusters up to 10 nodes).
+2. Connect your Kubernetes clusters (EKS, AKS, GKE) and serverless functions.
+3. Enable automatic rightsizing and spot instance usage.
+4. View cost savings and migration recommendations for containerized workloads.
+
+### Step 6: Automate Cost Comparison and Migration Recommendations
+1. Use Matilda Cloud's API to export inventory data.
+2. Ingest data into Harness or CloudHealth for unified cost analysis.
+3. Use AI recommendations from all tools to identify workloads that are cheaper on another cloud.
+4. Create a dashboard in your preferred BI tool (e.g., Power BI, Tableau) that aggregates cost data and recommendations.
+5. Set up weekly email reports using Harness or CloudHealth to automatically send cost comparisons and migration suggestions.
+
+### Step 7: Validate and Execute Migrations
+1. Review recommendations and simulate costs using the tools' what-if analysis.
+2. For high-confidence migrations, use Matilda Cloud's migration module or native cloud migration services.
+3. Monitor post-migration costs using the same tools to ensure savings are realized.
+
+### Conclusion
+By following this workflow, you can continuously compare multi-cloud costs and receive AI-driven migration recommendations, saving time and money. Start with free tiers and scale as needed.

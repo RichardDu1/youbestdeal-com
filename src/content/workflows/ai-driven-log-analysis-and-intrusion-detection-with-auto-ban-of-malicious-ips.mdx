@@ -1,0 +1,146 @@
+---
+title: "AI-Driven Log Analysis and Intrusion Detection with Auto-Ban of Malicious IPs"
+description: "Automate security log analysis using AI to detect intrusions in real-time and automatically block malicious IPs, reducing manual effort and response time."
+targetRole: ["security-admin"]
+targetIntent: ["detect-intrusions"]
+difficulty: "Intermediate"
+setupTime: "1-2 Hours"
+costEstimate: "$0 - $50/mo"
+roi: "Saves 20+ hours/week and reduces breach risk"
+toolsUsed: ["logguard-ai","zeek","fail2ban"]
+---
+
+## Overview
+
+This workflow leverages AI-powered log analysis to detect intrusions and automatically ban malicious IPs. By combining LogGuard AI for real-time threat detection, Zeek for network traffic analysis, and Fail2ban for automated IP banning, you can create a robust security system that operates 24/7.
+
+## Prerequisites
+
+- A Linux server (Ubuntu 20.04+ recommended)
+- Basic command-line knowledge
+- Root or sudo access
+
+## Step 1: Install and Configure Zeek
+
+Zeek is a powerful network analysis tool that captures and logs network traffic.
+
+```bash
+sudo apt update
+sudo apt install zeek
+```
+
+Configure Zeek to monitor your network interface (e.g., eth0):
+
+Edit `/etc/zeek/zeekctl.cfg` and set `interface=eth0`.
+
+Start Zeek:
+
+```bash
+sudo zeekctl deploy
+```
+
+Zeek will generate logs in `/var/log/zeek/`. We'll focus on `conn.log` and `notice.log`.
+
+## Step 2: Set Up LogGuard AI
+
+LogGuard AI by FraudGuard.io automates log analysis using AI to detect threats in real-time.
+
+Sign up at [LogGuard AI](https://fraudguard.io/logguard-ai) and get your API key.
+
+Install the LogGuard agent on your server:
+
+```bash
+curl -sSL https://fraudguard.io/install.sh | bash
+```
+
+Configure the agent to monitor Zeek logs:
+
+Edit `/etc/logguard/config.yaml`:
+
+```yaml
+log_sources:
+  - path: /var/log/zeek/conn.log
+    type: zeek-conn
+  - path: /var/log/zeek/notice.log
+    type: zeek-notice
+api_key: YOUR_API_KEY
+```
+
+Restart the agent:
+
+```bash
+sudo systemctl restart logguard
+```
+
+LogGuard AI will now analyze logs and send alerts for suspicious activity.
+
+## Step 3: Configure Fail2ban for Auto-Ban
+
+Fail2ban scans log files and bans IPs that show malicious signs.
+
+Install Fail2ban:
+
+```bash
+sudo apt install fail2ban
+```
+
+Create a custom jail for LogGuard alerts:
+
+Edit `/etc/fail2ban/jail.local`:
+
+```ini
+[logguard]
+enabled = true
+filter = logguard
+logpath = /var/log/logguard/alerts.log
+maxretry = 1
+bantime = 3600
+```
+
+Create the filter file `/etc/fail2ban/filter.d/logguard.conf`:
+
+```ini
+[Definition]
+failregex = ^.*IP: <HOST>.*$
+ignoreregex =
+```
+
+Restart Fail2ban:
+
+```bash
+sudo systemctl restart fail2ban
+```
+
+## Step 4: Integrate LogGuard Alerts with Fail2ban
+
+LogGuard AI can write alerts to a log file that Fail2ban monitors. Ensure the LogGuard agent is configured to output alerts to `/var/log/logguard/alerts.log`.
+
+In `/etc/logguard/config.yaml`, add:
+
+```yaml
+alert_output:
+  - type: file
+    path: /var/log/logguard/alerts.log
+```
+
+Restart LogGuard agent.
+
+## Step 5: Test the Workflow
+
+Simulate an intrusion (e.g., port scan) using a tool like nmap from a test IP:
+
+```bash
+nmap -sS YOUR_SERVER_IP
+```
+
+Check Zeek logs for the scan. LogGuard AI should detect it and write an alert. Fail2ban will then ban the IP. Verify with:
+
+```bash
+sudo fail2ban-client status logguard
+```
+
+You should see the test IP banned.
+
+## Conclusion
+
+You now have an AI-driven intrusion detection system that automatically bans malicious IPs. This setup reduces manual log analysis and response time, enhancing your security posture with minimal ongoing cost.

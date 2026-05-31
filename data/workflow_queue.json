@@ -1,0 +1,122 @@
+[
+  {
+    "topic": "Automated Migration from Shared Hosting to Cloud VPS with AI Configuration Tuning",
+    "role": "web-developer",
+    "intent": "migrate-hosting",
+    "status": "completed"
+  },
+  {
+    "topic": "AI-Powered Uptime Monitoring and Automated Failover to Backup Server",
+    "role": "site-owner",
+    "intent": "ensure-uptime",
+    "status": "completed"
+  },
+  {
+    "topic": "Dynamic Resource Scaling Based on AI Traffic Prediction for WooCommerce Stores",
+    "role": "ecommerce-manager",
+    "intent": "scale-resources",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated SSL Certificate Renewal and Mixed Content Fixer Using AI",
+    "role": "webmaster",
+    "intent": "maintain-security",
+    "status": "completed"
+  },
+  {
+    "topic": "AI-Driven Log Analysis and Intrusion Detection with Auto-Ban of Malicious IPs",
+    "role": "security-admin",
+    "intent": "detect-intrusions",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated WordPress Plugin Compatibility Checker Before Updates Using AI",
+    "role": "wordpress-admin",
+    "intent": "avoid-breakage",
+    "status": "completed"
+  },
+  {
+    "topic": "AI-Based Content Delivery Network (CDN) Cache Optimization for Global Audiences",
+    "role": "content-publisher",
+    "intent": "optimize-cdn",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated Database Query Optimization and Indexing Suggestions via AI",
+    "role": "database-admin",
+    "intent": "optimize-queries",
+    "status": "completed"
+  },
+  {
+    "topic": "AI-Powered Backup Scheduling with Incremental and Differential Strategy",
+    "role": "it-manager",
+    "intent": "automate-backup",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated Staging Environment Creation and Sync with Production Using AI",
+    "role": "devops-engineer",
+    "intent": "sync-environments",
+    "status": "completed"
+  },
+  {
+    "topic": "AI-Assisted DNS Configuration and TTL Optimization for Faster Resolution",
+    "role": "network-admin",
+    "intent": "optimize-dns",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated Load Testing and Performance Benchmarking with AI Reporting",
+    "role": "qa-engineer",
+    "intent": "test-performance",
+    "status": "completed"
+  },
+  {
+    "topic": "AI-Based Email Deliverability Checker and SPF/DKIM/DMARC Fixer",
+    "role": "email-marketer",
+    "intent": "improve-deliverability",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated Server Hardening and Compliance Check (PCI, HIPAA) Using AI",
+    "role": "compliance-officer",
+    "intent": "ensure-compliance",
+    "status": "completed"
+  },
+  {
+    "topic": "AI-Powered Web Application Firewall (WAF) Rule Customization per Traffic Patterns",
+    "role": "security-engineer",
+    "intent": "customize-waf",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated Git Deployment with AI Conflict Resolution and Rollback",
+    "role": "developer",
+    "intent": "deploy-code",
+    "status": "completed"
+  },
+  {
+    "topic": "AI-Driven Bandwidth Usage Analysis and Cost Optimization Recommendations",
+    "role": "finance-manager",
+    "intent": "reduce-costs",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated Server Health Checks and Proactive Maintenance Alerts with AI",
+    "role": "sysadmin",
+    "intent": "maintain-health",
+    "status": "completed"
+  },
+  {
+    "topic": "AI-Powered SEO Audit and Automated Meta Tag/Image Alt Text Fixes",
+    "role": "seo-specialist",
+    "intent": "improve-seo",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated Multi-Cloud Cost Comparison and Migration Recommendations Using AI",
+    "role": "cloud-architect",
+    "intent": "compare-costs",
+    "status": "completed"
+  }
+]
