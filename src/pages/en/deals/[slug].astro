@@ -1,0 +1,121 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const deals = await getCollection('deals');
+  return deals.map(deal => ({
+    params: { slug: deal.id.split('/').pop() },
+    props: { deal },
+  }));
+}
+
+const { deal } = Astro.props;
+const { Content } = await render(deal);
+
+// Schema Markup
+const dealSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": deal.data.title,
+  "description": deal.data.description,
+  "offers": {
+    "@type": "Offer",
+    "price": deal.data.ltdPrice.replace(/[^0-9.]/g, ''),
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": deal.data.publishedAt
+  }
+};
+---
+
+<BaseLayout
+  title={`${deal.data.title} Lifetime Deal | You Best Deal`}
+  description={deal.data.description}
+  canonical={`https://youbestdeal.com/en/deals/${deal.id.split('/').pop()}/`}
+  schema={{ type: 'Product', data: dealSchema }}
+>
+  <div class="bg-primary text-white text-center py-2 text-sm font-bold animate-pulse">
+    🚨 DEAL ENDING SOON! Secure your lifetime license before the price increases.
+  </div>
+
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <!-- Breadcrumbs -->
+    <nav class="mb-8 text-sm text-muted font-bold">
+      <a href="/en/deals/" class="hover:text-primary transition-colors">Deals</a>
+      <span class="mx-2">></span>
+      <span class="text-primary">{deal.data.category}</span>
+    </nav>
+
+    <div class="flex flex-col lg:flex-row gap-12">
+      <!-- Main Pitch Content -->
+      <article class="lg:w-2/3">
+        <header class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <h1 class="text-5xl font-black">{deal.data.title}</h1>
+            {deal.data.isHot && <span class="bg-warning text-white px-3 py-1 rounded-full text-xs font-black rotate-3">HOT 🔥</span>}
+          </div>
+          <p class="text-2xl text-muted font-medium leading-snug">{deal.data.description}</p>
+        </header>
+
+        <div class="bg-surface rounded-xl aspect-video mb-10 flex items-center justify-center border-2 border-border shadow-inner">
+          <span class="text-muted font-bold text-lg">Product Dashboard Video Pitch</span>
+        </div>
+
+        <div class="prose prose-lg max-w-none
+          prose-headings:font-black prose-headings:text-text
+          prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+          prose-h3:text-2xl
+          prose-p:text-muted prose-p:leading-relaxed
+          prose-li:text-muted prose-li:marker:text-primary
+          prose-strong:text-text prose-strong:font-black">
+          <Content />
+        </div>
+      </article>
+
+      <!-- Sticky Pricing Sidebar -->
+      <aside class="lg:w-1/3">
+        <div class="sticky top-8 bg-white rounded-2xl shadow-2xl border-2 border-primary p-8">
+          <div class="text-center mb-6">
+            <span class="text-muted line-through text-xl block mb-1">{deal.data.originalPrice} / year</span>
+            <span class="text-6xl font-black text-accent">{deal.data.ltdPrice}</span>
+            <span class="block text-accent font-bold mt-2 uppercase tracking-widest bg-accent/10 py-1 rounded">One-time payment</span>
+          </div>
+
+          <button class="w-full bg-primary text-white font-black text-xl py-4 rounded-xl shadow-[0_4px_14px_0_rgba(220,38,38,0.39)] hover:shadow-[0_6px_20px_rgba(220,38,38,0.23)] hover:bg-primary-dark transition-all mb-4 transform hover:scale-105 active:scale-95">
+            Buy Now
+          </button>
+          
+          <p class="text-center text-xs text-muted font-bold mb-8">
+            🔒 60-day money-back guarantee. No matter the reason.
+          </p>
+
+          <div class="border-t border-border pt-6">
+            <h3 class="font-black text-lg mb-4">What's included in this deal:</h3>
+            <ul class="space-y-3">
+              {deal.data.features.map(feature => (
+                <li class="flex items-start gap-3 text-sm font-medium">
+                  <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {deal.data.founder && (
+            <div class="mt-8 bg-surface p-4 rounded-xl flex items-center gap-4">
+              <div class="w-12 h-12 bg-slate-300 rounded-full flex items-center justify-center font-bold text-muted">
+                {deal.data.founder.charAt(0)}
+              </div>
+              <div class="text-sm">
+                <span class="font-bold block">{deal.data.founder}</span>
+                <span class="text-muted">Founder, {deal.data.title}</span>
+              </div>
+            </div>
+          )}
+
+        </div>
+      </aside>
+    </div>
+  </main>
+</BaseLayout>

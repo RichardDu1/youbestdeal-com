@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const allDeals = await getCollection('deals');
+const sortedDeals = allDeals.sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+const pageTitle = 'All Lifetime Software Deals | You Best Deal';
+const pageDescription = 'Browse the best current SaaS Lifetime Deals before they sell out.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="https://youbestdeal.com/en/deals/"
+>
+  <main class="max-w-6xl mx-auto px-6 py-16">
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl md:text-5xl font-black mb-4">Current Active Deals</h1>
+      <p class="text-lg text-muted">Hurry, these lifetime deals typically expire within 14-30 days.</p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {sortedDeals.length > 0 ? sortedDeals.map(deal => (
+        <a href={`/en/deals/${deal.id.split('/').pop()}`} class="block bg-white rounded-xl shadow-sm border border-border hover:shadow-xl hover:-translate-y-1 transition-all p-5 deal-card relative">
+          {deal.data.isHot && (
+            <div class="absolute -top-3 -right-3 bg-warning text-white font-black text-xs px-3 py-1 rounded-full shadow-md z-10">
+              HOT
+            </div>
+          )}
+          <div class="bg-surface rounded-lg aspect-video mb-4 flex items-center justify-center">
+            <span class="text-muted font-bold">{deal.data.title}</span>
+          </div>
+          <span class="text-xs font-bold text-primary uppercase tracking-wider">{deal.data.category}</span>
+          <h2 class="text-xl font-bold mb-2 mt-1">{deal.data.title}</h2>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-sm text-muted line-through">{deal.data.originalPrice}/yr</span>
+            <span class="text-2xl font-black text-accent">{deal.data.ltdPrice}</span>
+          </div>
+          <div class="w-full bg-accent/10 text-accent text-center font-bold py-2 rounded">
+            View Deal
+          </div>
+        </a>
+      )) : (
+        <div class="col-span-full text-center py-20 text-muted font-bold border-2 border-dashed border-border rounded-xl">
+          No deals currently active. Please check back later.
+        </div>
+      )}
+    </div>
+  </main>
+</BaseLayout>

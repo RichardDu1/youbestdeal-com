@@ -1,5 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allDeals = await getCollection('deals');
+// Sort to get hottest deal first
+const sortedDeals = allDeals.sort((a, b) => {
+  if (a.data.isHot && !b.data.isHot) return -1;
+  if (!a.data.isHot && b.data.isHot) return 1;
+  return b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf();
+});
+
+const featuredDeal = sortedDeals[0];
+const recentDeals = sortedDeals.slice(1, 4);
 
 const pageTitle = 'The Best Lifetime Deals & Discounts | You Best Deal';
 const pageDescription = 'Never pay full price for SaaS. Discover the best lifetime software deals before they expire.';
@@ -29,36 +41,46 @@ const pageDescription = 'Never pay full price for SaaS. Discover the best lifeti
           We curate the absolute best Lifetime Deals (LTDs) on SaaS, marketing tools, and WordPress plugins. Pay once, use forever.
         </p>
         <div class="flex gap-4">
-          <button class="bg-primary text-white font-bold text-lg px-8 py-4 rounded-full shadow-[0_4px_14px_0_rgba(220,38,38,0.39)] hover:shadow-[0_6px_20px_rgba(220,38,38,0.23)] hover:bg-primary-dark transition-all">
-            Shop Lifetime Deals
-          </button>
+          <a href="/en/deals/" class="inline-block bg-primary text-white font-bold text-lg px-8 py-4 rounded-full shadow-[0_4px_14px_0_rgba(220,38,38,0.39)] hover:shadow-[0_6px_20px_rgba(220,38,38,0.23)] hover:bg-primary-dark transition-all">
+            Shop All Lifetime Deals
+          </a>
         </div>
       </div>
       
       <!-- Featured Deal Highlight -->
       <div class="md:w-1/2 w-full">
-        <div class="bg-white rounded-2xl shadow-xl border-2 border-warning p-6 relative">
-          <div class="absolute -top-4 -right-4 bg-warning text-white font-black px-4 py-2 rounded-full rotate-12 shadow-lg">
-            HOT! 🔥
+        {featuredDeal ? (
+          <div class="bg-white rounded-2xl shadow-xl border-2 border-warning p-6 relative deal-card">
+            {featuredDeal.data.isHot && (
+              <div class="absolute -top-4 -right-4 bg-warning text-white font-black px-4 py-2 rounded-full rotate-12 shadow-lg">
+                HOT! 🔥
+              </div>
+            )}
+            <a href={`/en/deals/${featuredDeal.id.split('/').pop()}`} class="block">
+              <div class="bg-surface rounded-xl aspect-video mb-4 flex items-center justify-center">
+                <span class="text-muted font-bold text-2xl">{featuredDeal.data.title}</span>
+              </div>
+              <h3 class="text-2xl font-bold mb-2">{featuredDeal.data.title}: {featuredDeal.data.description.substring(0, 50)}...</h3>
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-muted line-through text-lg">{featuredDeal.data.originalPrice}/yr</span>
+                <span class="text-3xl font-black text-accent">{featuredDeal.data.ltdPrice}</span>
+                <span class="bg-accent/10 text-accent font-bold px-2 py-1 rounded text-sm">LIFETIME</span>
+              </div>
+              <!-- Mock Countdown -->
+              <div class="flex items-center gap-2 text-primary font-bold mb-4 bg-primary/10 p-2 rounded justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Deal ends in 12h 45m 22s
+              </div>
+              <div class="w-full bg-accent text-center text-white font-bold py-3 rounded-lg hover:bg-emerald-600 transition-colors text-lg">
+                Claim Deal Now
+              </div>
+            </a>
           </div>
-          <div class="bg-surface rounded-xl aspect-video mb-4 flex items-center justify-center">
-            <span class="text-muted font-bold text-2xl">AcmeMail CRM</span>
+        ) : (
+          <div class="bg-surface border-2 border-dashed border-border rounded-xl p-12 text-center text-muted font-bold">
+            Searching for active deals...
           </div>
-          <h3 class="text-2xl font-bold mb-2">AcmeMail: The Ultimate Email CRM</h3>
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-muted line-through text-lg">$1,200/yr</span>
-            <span class="text-3xl font-black text-accent">$49</span>
-            <span class="bg-accent/10 text-accent font-bold px-2 py-1 rounded text-sm">LIFETIME</span>
-          </div>
-          <!-- Mock Countdown -->
-          <div class="flex items-center gap-2 text-primary font-bold mb-4 bg-primary/10 p-2 rounded justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            Deal ends in 12h 45m 22s
-          </div>
-          <button class="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-emerald-600 transition-colors text-lg">
-            Claim Deal Now
-          </button>
-        </div>
+        )}
       </div>
     </div>
   </header>
