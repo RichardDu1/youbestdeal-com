@@ -1,0 +1,93 @@
+---
+title: "Automated SSL Certificate Renewal and HTTPS Redirect Verification with AI Error Detection"
+description: "Eliminate expired certificate issues and ensure HTTPS compliance with a fully automated workflow using Certbot, Let's Encrypt, and AI-powered monitoring via UptimeRobot or Checkly."
+targetRole: ["sysadmin"]
+targetIntent: ["avoid-expired-certificate-issues"]
+difficulty: "Intermediate"
+setupTime: "30 Minutes"
+costEstimate: "$0 - $20/mo"
+roi: "Saves 10 hours/month"
+toolsUsed: ["certbot","uptimerobot","checkly"]
+---
+
+## Automated SSL Certificate Renewal and HTTPS Redirect Verification with AI Error Detection
+
+### Overview
+This guide provides a step-by-step approach to automate SSL certificate renewal using Certbot and Let's Encrypt, verify HTTPS redirects, and detect errors using AI-powered monitoring tools. By the end, you'll have a hands-free system that prevents expired certificate issues and ensures secure redirects.
+
+### Prerequisites
+- A Linux server (Ubuntu 20.04+) with sudo access
+- A domain name pointing to your server
+- Basic familiarity with the command line
+
+### Step 1: Install Certbot and Obtain SSL Certificate
+1. SSH into your server.
+2. Install Certbot and the Nginx/Apache plugin:
+   ```bash
+   sudo apt update
+   sudo apt install certbot python3-certbot-nginx
+   ```
+3. Obtain a certificate:
+   ```bash
+   sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+   ```
+4. Follow the prompts to complete the installation.
+
+### Step 2: Automate Renewal with Cron
+1. Test the renewal process:
+   ```bash
+   sudo certbot renew --dry-run
+   ```
+2. Edit the crontab:
+   ```bash
+   sudo crontab -e
+   ```
+3. Add the following line to run renewal twice daily:
+   ```
+   0 0,12 * * * /usr/bin/certbot renew --quiet
+   ```
+4. Save and exit. Certbot will automatically renew certificates 30 days before expiry.
+
+### Step 3: Configure HTTPS Redirects
+1. For Nginx, ensure your server block includes:
+   ```nginx
+   server {
+       listen 80;
+       server_name yourdomain.com www.yourdomain.com;
+       return 301 https://$server_name$request_uri;
+   }
+   ```
+2. Reload Nginx:
+   ```bash
+   sudo systemctl reload nginx
+   ```
+
+### Step 4: Set Up AI-Powered Monitoring with UptimeRobot
+1. Create a free account at [UptimeRobot](https://uptimerobot.com).
+2. Add a new monitor:
+   - Monitor Type: HTTP(s)
+   - URL: `https://yourdomain.com`
+   - Check for SSL expiry: Enable "Monitor SSL Certificate"
+   - Alert when: SSL certificate expires in less than 30 days
+3. Add another monitor for HTTPS redirect:
+   - Monitor Type: Keyword
+   - URL: `http://yourdomain.com`
+   - Keyword: `https://yourdomain.com` (to verify redirect)
+4. Configure alert contacts (email, SMS, Slack).
+
+### Step 5: AI Error Detection with Checkly (Optional)
+1. Sign up at [Checkly](https://checklyhq.com) (free tier available).
+2. Create a browser check that navigates to `https://yourdomain.com` and verifies the page loads correctly.
+3. Add an API check for SSL certificate validity using the SSL/TLS check type.
+4. Enable AI-powered error analysis to automatically detect and classify issues.
+
+### Step 6: Test the Workflow
+1. Manually trigger a renewal:
+   ```bash
+   sudo certbot renew
+   ```
+2. Visit `http://yourdomain.com` – it should redirect to `https://yourdomain.com`.
+3. Check UptimeRobot dashboard for SSL status.
+
+### Conclusion
+You now have a fully automated SSL renewal and HTTPS verification system with AI error detection. This setup ensures your certificates never expire and your redirects remain secure, saving you hours of manual monitoring.

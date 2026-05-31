@@ -1,0 +1,75 @@
+---
+title: "Automated Migration of Legacy WordPress Sites to Cloud Hosting with AI Downtime Prediction"
+description: "Migrate legacy WordPress sites to cloud hosting with minimal downtime using automated tools and AI-driven downtime prediction. This guide covers site audit, migration automation, DNS switching, and post-migration testing."
+targetRole: ["web-developer"]
+targetIntent: ["migrate-sites-with-minimum-downtime"]
+difficulty: "Intermediate"
+setupTime: "2-3 hours"
+costEstimate: "$0 - $50/mo"
+roi: "Saves 20+ hours per migration and reduces downtime by 90%"
+toolsUsed: ["wp-migrate-db-pro","cloudflare","uptimerobot","wp-cli"]
+---
+
+## Automated Migration of Legacy WordPress Sites to Cloud Hosting with AI Downtime Prediction
+
+### Overview
+Migrating legacy WordPress sites to cloud hosting can be risky and time-consuming. This workflow leverages automated migration tools, AI-based downtime prediction, and cloud infrastructure to ensure a seamless transition with minimal downtime.
+
+### Prerequisites
+- Access to legacy WordPress site (admin credentials, FTP/SSH)
+- Cloud hosting account (e.g., AWS, Google Cloud, or DigitalOcean)
+- Domain management access (DNS)
+- Basic command-line knowledge
+
+### Step 1: Audit the Legacy Site
+Use **WP-CLI** to gather site info:
+```bash
+wp plugin list --format=csv > plugins.csv
+wp theme list --format=csv > themes.csv
+wp db size --size_format=mb
+```
+Check for large media files, outdated plugins, and database bloat.
+
+### Step 2: Set Up Cloud Hosting Environment
+Provision a cloud server (e.g., AWS EC2 t3.medium) with LAMP/LEMP stack. Install WordPress and configure the same PHP version as the legacy site.
+
+### Step 3: Automated Migration with WP Migrate DB Pro
+Use **WP Migrate DB Pro** to push the database and media files:
+1. Install WP Migrate DB Pro on both sites.
+2. Generate a migration key on the legacy site.
+3. On the new site, enter the key and select "Pull" to transfer database and media.
+4. Use the "Find & Replace" feature to update URLs.
+
+### Step 4: AI Downtime Prediction with UptimeRobot
+Set up **UptimeRobot** to monitor the legacy site. Use its API to fetch historical uptime data. Train a simple linear regression model (or use a pre-built AI service) to predict downtime based on traffic patterns, error rates, and server load. Schedule the migration during predicted low-risk windows.
+
+### Step 5: DNS Cutover with Cloudflare
+Use **Cloudflare** for DNS management:
+1. Add both legacy and new site IPs as A records.
+2. Set TTL to 120 seconds for fast propagation.
+3. Enable Cloudflare's "Always Online" feature to serve cached content if legacy site goes down.
+4. Once migration is verified, update the A record to point to the new server.
+
+### Step 6: Post-Migration Testing
+- Run WP-CLI commands to verify database integrity:
+```bash
+wp db check
+```
+- Test critical pages, forms, and e-commerce functionality.
+- Monitor UptimeRobot for any downtime alerts.
+
+### Step 7: Decommission Legacy Site
+After 48 hours of stable operation, take a final backup of the legacy site and terminate the old server.
+
+### ROI Analysis
+- **Time saved**: Automated migration reduces manual work by 80%.
+- **Downtime reduction**: AI prediction minimizes unexpected outages.
+- **Cost**: Cloud hosting with reserved instances can save 30% vs traditional hosting.
+
+### Troubleshooting
+- **Database connection errors**: Check wp-config.php for correct DB credentials.
+- **Mixed content issues**: Use WP Migrate DB Pro's find/replace or a plugin like Better Search Replace.
+- **Slow site**: Enable caching (e.g., WP Rocket) and CDN (Cloudflare).
+
+### Conclusion
+By combining automated migration tools, AI downtime prediction, and robust DNS management, you can migrate legacy WordPress sites to cloud hosting with minimal risk and downtime.

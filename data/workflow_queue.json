@@ -118,5 +118,305 @@
     "role": "cloud-architect",
     "intent": "compare-costs",
     "status": "completed"
+  },
+  {
+    "topic": "Automated Migration of Legacy WordPress Sites to Cloud Hosting with AI Downtime Prediction",
+    "role": "web-developer",
+    "intent": "migrate-sites-with-minimum-downtime",
+    "status": "completed"
+  },
+  {
+    "topic": "AI-Driven Load Balancing for WooCommerce Stores During Black Friday Traffic Spikes",
+    "role": "ecommerce-manager",
+    "intent": "prevent-crashes-during-peak-traffic",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated SSL Certificate Renewal and HTTPS Redirect Verification with AI Error Detection",
+    "role": "sysadmin",
+    "intent": "avoid-expired-certificate-issues",
+    "status": "completed"
+  },
+  {
+    "topic": "Predictive Scaling for Shared Hosting Plans Using AI Traffic Forecasting",
+    "role": "hosting-provider",
+    "intent": "optimize-resource-allocation",
+    "status": "completed"
+  },
+  {
+    "topic": "Automated Backup and Disaster Recovery Testing with AI Anomaly Detection",
+    "role": "it-manager",
+    "intent": "ensure-backup-integrity",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Powered SEO Audit and Performance Optimization for Hosted Sites",
+    "role": "seo-specialist",
+    "intent": "improve-search-rankings",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Phishing and Malware Scanning with AI Threat Intelligence",
+    "role": "security-analyst",
+    "intent": "protect-hosted-sites",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Based Customer Support Ticket Routing for Hosting Issues",
+    "role": "support-manager",
+    "intent": "reduce-response-time",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Domain Expiry Monitoring and Renewal with AI Price Forecasting",
+    "role": "domain-manager",
+    "intent": "prevent-domain-loss",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Optimized Content Delivery Network (CDN) Configuration for Global Audiences",
+    "role": "devops-engineer",
+    "intent": "reduce-latency",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Database Query Optimization for High-Traffic Hosted Apps",
+    "role": "database-administrator",
+    "intent": "improve-query-performance",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Powered Uptime Monitoring and Root Cause Analysis for Hosting Servers",
+    "role": "site-reliability-engineer",
+    "intent": "minimize-downtime",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Compliance Checks (GDPR, HIPAA) for Hosted Data with AI Audits",
+    "role": "compliance-officer",
+    "intent": "ensure-regulatory-compliance",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Driven Cost Optimization for Cloud Hosting Resources Based on Usage Patterns",
+    "role": "cloud-cost-analyst",
+    "intent": "reduce-hosting-costs",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Staging Environment Deployment and Testing for Hosted Sites",
+    "role": "web-developer",
+    "intent": "streamline-deployment",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Based Personalized Hosting Plan Recommendations for New Customers",
+    "role": "sales-manager",
+    "intent": "increase-conversion",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated DNS Configuration and Propagation Monitoring with AI Error Fixes",
+    "role": "network-engineer",
+    "intent": "avoid-dns-misconfigurations",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Powered Cache Invalidation Strategies for Dynamic Content Hosting",
+    "role": "performance-engineer",
+    "intent": "improve-page-load-times",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Email Server Setup and Spam Filter Tuning with AI Learning",
+    "role": "email-marketing-manager",
+    "intent": "improve-deliverability",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Driven Resource Quota Management for Reseller Hosting Accounts",
+    "role": "hosting-reseller",
+    "intent": "prevent-overuse",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Coupon Design for Seasonal Sales Using AI Brand Guidelines",
+    "role": "ecommerce-graphic-designer",
+    "intent": "generate-brand-consistent-coupon-templates",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Powered A/B Testing of Discount Coupon Visuals for Social Media Campaigns",
+    "role": "digital-marketing-manager",
+    "intent": "optimize-coupon-design-conversion",
+    "status": "pending"
+  },
+  {
+    "topic": "Converting Customer Feedback into Personalized Coupon Designs via AI Sentiment Analysis",
+    "role": "customer-experience-manager",
+    "intent": "personalize-coupons-from-reviews",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Resizing of Coupon Graphics for Multi-Platform Distribution (Email, Web, Print)",
+    "role": "content-creator",
+    "intent": "resize-coupons-automatically",
+    "status": "pending"
+  },
+  {
+    "topic": "AI Color Palette Extraction from Product Images for Coupon Backgrounds",
+    "role": "product-designer",
+    "intent": "match-coupon-colors-to-products",
+    "status": "pending"
+  },
+  {
+    "topic": "Generating Custom Coupon Illustrations Using Text-to-Image AI for Niche Promotions",
+    "role": "illustrator",
+    "intent": "create-custom-coupon-art",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Driven Expiry Date Optimization for Coupons Based on User Engagement Patterns",
+    "role": "promotion-strategist",
+    "intent": "optimize-coupon-validity",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Coupon Code Generation with Embedded QR and Barcode Using Design Software",
+    "role": "graphic-designer",
+    "intent": "generate-coupon-codes-with-barcodes",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Powered Background Removal and Object Isolation for Coupon Product Highlights",
+    "role": "photo-editor",
+    "intent": "isolate-products-for-coupons",
+    "status": "pending"
+  },
+  {
+    "topic": "Personalized Coupon Layout Generation Based on Customer Purchase History",
+    "role": "loyalty-program-manager",
+    "intent": "personalize-coupon-layout",
+    "status": "pending"
+  },
+  {
+    "topic": "Multilingual Coupon Design Automation Using AI Translation and Localized Fonts",
+    "role": "international-marketing-manager",
+    "intent": "localize-coupon-designs",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Driven Coupon Heatmap Analysis to Optimize Visual Element Placement",
+    "role": "ux-designer",
+    "intent": "optimize-coupon-layout-via-heatmaps",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Generation of Coupon Mockups for E-Commerce Product Pages",
+    "role": "product-listing-specialist",
+    "intent": "create-coupon-mockups",
+    "status": "pending"
+  },
+  {
+    "topic": "AI Color Blindness Accessibility Check for Coupon Designs",
+    "role": "accessibility-designer",
+    "intent": "ensure-coupon-accessibility",
+    "status": "pending"
+  },
+  {
+    "topic": "Batch Processing of Coupon Variations with AI-Generated Headlines and CTAs",
+    "role": "ad-campaign-manager",
+    "intent": "generate-multiple-coupon-variants",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Based Coupon Design Consistency Checker Across Marketing Materials",
+    "role": "brand-manager",
+    "intent": "maintain-brand-consistency",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Coupon Design from Voice Commands Using AI Speech-to-Text and NLP",
+    "role": "hands-free-designer",
+    "intent": "voice-command-coupon-design",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Driven Coupon Template Generation for Recurring Subscriptions",
+    "role": "saas-marketer",
+    "intent": "generate-subscription-coupons",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Coupon Color Scheme Generation Using AI Based on Industry Trends",
+    "role": "trend-analyst",
+    "intent": "trend-based-coupon-colors",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Powered Coupon Design Validation Against Platform-Specific Requirements (Amazon, Etsy)",
+    "role": "marketplace-seller",
+    "intent": "validate-coupon-for-platform",
+    "status": "pending"
+  },
+  {
+    "topic": "Automating Local SEO Citations with AI Verification and Submission",
+    "role": "local-business-owner",
+    "intent": "automate-citation-building",
+    "status": "pending"
+  },
+  {
+    "topic": "Generating SEO-Optimized Product Descriptions from Unstructured Data Using GPT and Keyword Clustering",
+    "role": "ecommerce-seo-specialist",
+    "intent": "generate-product-descriptions",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Internal Linking Optimization Using AI Topic Modeling and PageRank Analysis",
+    "role": "content-marketing-manager",
+    "intent": "optimize-internal-links",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Powered Content Gap Analysis and Brief Generation for Competitor Overlap",
+    "role": "seo-content-strategist",
+    "intent": "fill-content-gaps",
+    "status": "pending"
+  },
+  {
+    "topic": "Scheduling and Automating Weekly SEO Performance Reports with Anomaly Detection",
+    "role": "seo-consultant",
+    "intent": "automate-seo-reporting",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Backlink Outreach Email Personalization Using AI and Prospect Research",
+    "role": "link-building-specialist",
+    "intent": "personalize-outreach",
+    "status": "pending"
+  },
+  {
+    "topic": "Extracting and Structuring Schema Markup Data from HTML Using AI for Rich Snippets",
+    "role": "technical-seo-specialist",
+    "intent": "extract-schema-markup",
+    "status": "pending"
+  },
+  {
+    "topic": "AI-Powered Topic Clusters and Pillar Page Generation from Keyword Research Data",
+    "role": "seo-content-manager",
+    "intent": "build-topic-clusters",
+    "status": "pending"
+  },
+  {
+    "topic": "Automated Redirect Mapping and 404 Error Resolution Using AI Crawl Analysis",
+    "role": "site-migration-seo",
+    "intent": "automate-redirect-mapping",
+    "status": "pending"
+  },
+  {
+    "topic": "Creating and Updating Google My Business Posts with AI-Generated Content and Schedules",
+    "role": "local-seo-manager",
+    "intent": "automate-gmb-posts",
+    "status": "pending"
   }
 ]

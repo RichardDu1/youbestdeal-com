@@ -1,4 +1,5 @@
----
+﻿---
+import CookieBanner from '../components/CookieBanner.astro';
 import '../styles/global.css';
 const { title, description, canonical, schema } = Astro.props;
 ---
@@ -43,5 +44,7 @@ const { title, description, canonical, schema } = Astro.props;
     <footer class="border-t border-white/5 py-12 text-center text-sm text-slate-600 bg-black/20">
       <p>&copy; {new Date().getFullYear()} {title.split('—')[0].trim()}. All rights reserved.</p>
     </footer>
+      <CookieBanner />
   </body>
 </html>
+
