@@ -1,0 +1,26 @@
+---
+// Terms of Use page
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const title = 'Terms of Use — Find the AI For That (2026)';
+const description = 'Terms and conditions for using Find the AI For That.';
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <Breadcrumb />
+  <section class="container py-16 max-w-3xl">
+    <h1 class="text-3xl font-bold mb-6">Terms of Use</h1>
+    <div class="prose prose-lg max-w-none text-muted space-y-4">
+      <p><strong>Last updated:</strong> June 2026</p>
+      <h2 class="text-xl font-bold text-text">1. Acceptance</h2>
+      <p>By using this website, you agree to these terms. If you disagree, please discontinue use.</p>
+      <h2 class="text-xl font-bold text-text">2. Content</h2>
+      <p>All content is for informational purposes only. We strive for accuracy but make no guarantees. AI tools change rapidly — verify directly with providers.</p>
+      <h2 class="text-xl font-bold text-text">3. Affiliate Links</h2>
+      <p>We participate in affiliate programs. Purchases through our links may earn us a commission.</p>
+      <h2 class="text-xl font-bold text-text">4. Intellectual Property</h2>
+      <p>All original content is protected by copyright. You may not reproduce without permission.</p>
+    </div>
+  </section>
+</BaseLayout>

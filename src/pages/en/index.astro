@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = 'The Best Lifetime Deals & Discounts | You Best Deal';
+const pageDescription = 'Never pay full price for SaaS. Discover the best lifetime software deals before they expire.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="https://youbestdeal.com/en/"
+  schema={{ type: 'WebSite', data: { description: pageDescription } }}
+>
+  <!-- Urgency Announcement Bar -->
+  <div class="bg-primary text-white text-center py-2 text-sm font-bold flex justify-center items-center gap-2">
+    <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    BLACK FRIDAY LIFETIME DEALS ARE LIVE. ENDS IN 48 HOURS.
+  </div>
+
+  <!-- E-commerce Hero -->
+  <header class="bg-white border-b border-border py-12 px-6 shadow-sm">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="md:w-1/2">
+        <h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight">
+          Never Pay Monthly <br/>
+          <span class="text-accent">Subscriptions Again.</span>
+        </h1>
+        <p class="text-lg text-muted mb-8">
+          We curate the absolute best Lifetime Deals (LTDs) on SaaS, marketing tools, and WordPress plugins. Pay once, use forever.
+        </p>
+        <div class="flex gap-4">
+          <button class="bg-primary text-white font-bold text-lg px-8 py-4 rounded-full shadow-[0_4px_14px_0_rgba(220,38,38,0.39)] hover:shadow-[0_6px_20px_rgba(220,38,38,0.23)] hover:bg-primary-dark transition-all">
+            Shop Lifetime Deals
+          </button>
+        </div>
+      </div>
+      
+      <!-- Featured Deal Highlight -->
+      <div class="md:w-1/2 w-full">
+        <div class="bg-white rounded-2xl shadow-xl border-2 border-warning p-6 relative">
+          <div class="absolute -top-4 -right-4 bg-warning text-white font-black px-4 py-2 rounded-full rotate-12 shadow-lg">
+            HOT! 🔥
+          </div>
+          <div class="bg-surface rounded-xl aspect-video mb-4 flex items-center justify-center">
+            <span class="text-muted font-bold text-2xl">AcmeMail CRM</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">AcmeMail: The Ultimate Email CRM</h3>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-muted line-through text-lg">$1,200/yr</span>
+            <span class="text-3xl font-black text-accent">$49</span>
+            <span class="bg-accent/10 text-accent font-bold px-2 py-1 rounded text-sm">LIFETIME</span>
+          </div>
+          <!-- Mock Countdown -->
+          <div class="flex items-center gap-2 text-primary font-bold mb-4 bg-primary/10 p-2 rounded justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Deal ends in 12h 45m 22s
+          </div>
+          <button class="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-emerald-600 transition-colors text-lg">
+            Claim Deal Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+</BaseLayout>

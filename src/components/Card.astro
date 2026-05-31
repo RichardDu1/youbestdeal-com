@@ -1,0 +1,47 @@
+---
+// Card.astro — Reusable card for tool listings, articles, categories
+export interface Props {
+  title: string;
+  description: string;
+  href: string;
+  image?: string;
+  tag?: string;
+  rating?: number;
+  price?: string;
+}
+
+const { title, description, href, image, tag, rating, price } = Astro.props;
+---
+
+<a href={href} class="group block bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300">
+  {/* Image */}
+  {image ? (
+    <div class="aspect-video overflow-hidden bg-neutral">
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+      />
+    </div>
+  ) : (
+    <div class="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+      <span class="text-3xl font-bold text-primary/30">{title.charAt(0)}</span>
+    </div>
+  )}
+
+  {/* Content */}
+  <div class="p-5">
+    <div class="flex items-center gap-2 mb-2">
+      {tag && <span class="text-xs font-medium text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">{tag}</span>}
+      {rating && (
+        <span class="text-xs font-medium text-muted ml-auto">★ {rating.toFixed(1)}</span>
+      )}
+    </div>
+    <h3 class="font-semibold text-text mb-1 group-hover:text-primary transition-colors line-clamp-1">{title}</h3>
+    <p class="text-sm text-muted line-clamp-2 mb-3">{description}</p>
+    {price !== undefined && (
+      <p class="text-sm font-semibold text-primary">{price === '0' || price === 'Free' ? 'Free' : `$${price}`}</p>
+    )}
+  </div>
+</a>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Card from '../../../components/Card.astro';
+
+const title = 'Latest AI Tool Reviews (2026) — Find the AI For That';
+const description = 'The newest AI tool reviews, fresh off testing. Stay up to date with the latest AI releases and updates.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16">
+    <h1 class="text-3xl font-bold mb-8">Latest AI Tool Reviews</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Card title="ChatGPT Review (2026)" description="Is ChatGPT still the best AI assistant? Our honest review" href="/en/reviews/chatgpt/" rating={4.5} tag="Jun 2026" />
+      <Card title="Midjourney V7 Review" description="The latest Midjourney update raises the bar again" href="/en/reviews/midjourney-v7/" rating={4.8} tag="Jun 2026" />
+      <Card title="Claude vs ChatGPT" description="Side-by-side comparison of the top two AI assistants" href="/en/compare/claude-vs-chatgpt/" rating={4.7} tag="May 2026" />
+      <Card title="Cursor IDE Review" description="AI-first IDE redefining how developers write code" href="/en/reviews/cursor/" rating={4.8} tag="May 2026" />
+      <Card title="GitHub Copilot Review" description="The most popular AI coding assistant, tested" href="/en/reviews/github-copilot/" rating={4.6} tag="May 2026" />
+      <Card title="Jasper AI Review" description="Purpose-built AI copywriter for marketing teams" href="/en/reviews/jasper/" rating={4.3} tag="Apr 2026" />
+    </div>
+  </section>
+</BaseLayout>

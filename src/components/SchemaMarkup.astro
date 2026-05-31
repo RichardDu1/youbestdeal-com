@@ -1,0 +1,139 @@
+---
+// SchemaMarkup.astro â€?JSON-LD structured data
+// Supports: WebSite, Organization, SoftwareApplication, Article, FAQPage, HowTo, BreadcrumbList
+
+export interface Props {
+  type: 'WebSite' | 'Organization' | 'SoftwareApplication' | 'Article' | 'FAQPage' | 'HowTo' | 'BreadcrumbList';
+  data: Record<string, any>;
+}
+
+const { type, data } = Astro.props;
+const siteUrl = Astro.site.href;
+const siteName = 'You Best Deal';
+
+function buildSchema(): Record<string, any> {
+  const base = {
+    '@context': 'https://schema.org',
+    '@type': type,
+  };
+
+  switch (type) {
+    case 'WebSite': {
+      return {
+        ...base,
+        name: siteName,
+        url: siteUrl,
+        description: data.description || 'Discover the best AI tools for every task.',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${siteUrl}en/search/?q={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
+      };
+    }
+
+    case 'Organization': {
+      return {
+        ...base,
+        name: siteName,
+        url: siteUrl,
+        logo: `${siteUrl}images/logo.png`,
+        sameAs: data.sameAs || [],
+      };
+    }
+
+    case 'SoftwareApplication': {
+      return {
+        ...base,
+        name: data.name,
+        applicationCategory: data.category || 'AIApplication',
+        operatingSystem: data.os || 'Web',
+        url: data.url,
+        description: data.description,
+        offers: data.price
+          ? {
+              '@type': 'Offer',
+              price: data.price,
+              priceCurrency: data.currency || 'USD',
+            }
+          : undefined,
+        aggregateRating: data.rating
+          ? {
+              '@type': 'AggregateRating',
+              ratingValue: data.rating,
+              reviewCount: data.reviewCount || 1,
+            }
+          : undefined,
+      };
+    }
+
+    case 'Article': {
+      return {
+        ...base,
+        headline: data.headline,
+        description: data.description,
+        author: {
+          '@type': 'Organization',
+          name: siteName,
+        },
+        datePublished: data.datePublished,
+        dateModified: data.dateModified || data.datePublished,
+        image: data.image,
+      };
+    }
+
+    case 'FAQPage': {
+      return {
+        ...base,
+        mainEntity: (data.questions || []).map((q: { question: string; answer: string }) => ({
+          '@type': 'Question',
+          name: q.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: q.answer,
+          },
+        })),
+      };
+    }
+
+    case 'HowTo': {
+      return {
+        ...base,
+        name: data.name,
+        description: data.description,
+        step: (data.steps || []).map((s: { name: string; text: string }, i: number) => ({
+          '@type': 'HowToStep',
+          position: i + 1,
+          name: s.name,
+          itemListElement: {
+            '@type': 'HowToDirection',
+            text: s.text,
+          },
+        })),
+      };
+    }
+
+    case 'BreadcrumbList': {
+      return {
+        ...base,
+        itemListElement: (data.items || []).map((item: { name: string; url: string }, i: number) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: item.name,
+          item: item.url,
+        })),
+      };
+    }
+
+    default:
+      return base;
+  }
+}
+
+const schema = buildSchema();
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema, null, 0)}></script>

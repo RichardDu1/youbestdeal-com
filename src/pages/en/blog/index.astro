@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+const title = 'AI Tools Blog — Find the AI For That (2026)';
+const description = 'Articles, guides, and insights about AI tools, trends, and how to get the most out of AI.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16">
+    <h1 class="text-3xl font-bold mb-8">AI Tools Blog</h1>
+    <p class="text-muted mb-10 max-w-2xl">Guides, tutorials, and insights to help you master AI tools and stay ahead of the curve.</p>
+    <div class="space-y-4 max-w-3xl">
+      <a href="/en/blog/how-to-choose-ai-tool/" class="block p-5 bg-white border rounded-lg hover:border-primary/30 transition-colors">
+        <span class="text-xs text-secondary font-medium">Guide</span>
+        <h3 class="font-semibold mt-1">How to Choose the Right AI Tool for Your Needs (2026)</h3>
+        <p class="text-sm text-muted mt-1">A practical framework for evaluating AI tools based on your specific use case, budget, and skill level.</p>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

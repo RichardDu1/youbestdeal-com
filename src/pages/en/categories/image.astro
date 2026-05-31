@@ -1,0 +1,22 @@
+---
+// AI Image category page
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Card from '../../../components/Card.astro';
+
+const title = 'Best AI Image Generators (2026) — Find the AI For That';
+const description = 'Compare the best AI image generators for art, logos, photos, and design. Honest reviews, side-by-side tests.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16">
+    <h1 class="text-3xl font-bold mb-2">AI Image Generators</h1>
+    <p class="text-muted mb-10 max-w-2xl">Create stunning visuals from text prompts. Compare quality, speed, and pricing across top AI image tools.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Card title="Midjourney" description="Industry-leading AI art generator with unmatched aesthetic quality" href="/en/reviews/midjourney-v7/" rating={4.8} price="10" />
+      <Card title="DALL·E 3" description="OpenAI's image generator, integrated with ChatGPT for easy prompting" href="/en/reviews/dalle-3/" rating={4.4} price="Free" />
+      <Card title="Stable Diffusion" description="Open-source image generation, fully customizable and self-hostable" href="/en/reviews/stable-diffusion/" rating={4.2} price="Free" />
+    </div>
+  </section>
+</BaseLayout>

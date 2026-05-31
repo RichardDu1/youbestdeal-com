@@ -1,0 +1,40 @@
+---
+// HTML Sitemap — helps crawlers discover all pages
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const title = 'Sitemap — Find the AI For That (2026)';
+const description = 'Complete list of all pages on Find the AI For That.';
+
+const pages = [
+  { label: 'Home', href: '/en/' },
+  { label: 'Categories', href: '/en/categories/' },
+  { label: 'AI Writing Tools', href: '/en/categories/writing/' },
+  { label: 'AI Image Generators', href: '/en/categories/image/' },
+  { label: 'AI Coding Assistants', href: '/en/categories/coding/' },
+  { label: 'AI Productivity Tools', href: '/en/categories/productivity/' },
+  { label: 'Latest Reviews', href: '/en/latest/' },
+  { label: 'Compare Tools', href: '/en/compare/' },
+  { label: 'Blog', href: '/en/blog/' },
+  { label: 'AI Tool Finder', href: '/en/finder/' },
+  { label: 'Newsletter', href: '/en/newsletter/' },
+  { label: 'About', href: '/en/about/' },
+  { label: 'Contact', href: '/en/contact/' },
+  { label: 'Privacy Policy', href: '/en/privacy/' },
+  { label: 'Terms of Use', href: '/en/terms/' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16 max-w-3xl">
+    <h1 class="text-3xl font-bold mb-8">Sitemap</h1>
+    <ul class="space-y-2">
+      {pages.map((p) => (
+        <li>
+          <a href={p.href} class="text-primary hover:text-primary-dark">{p.label}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

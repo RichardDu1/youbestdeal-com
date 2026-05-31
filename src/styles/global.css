@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/* === TRUE BESPOKE REDESIGN: YOU BEST DEAL ===
+   Aesthetic: High-Conversion E-commerce / Urgency
+   Vibe: AppSumo, Excitement, FOMO, Crimson & Gold === */
+
+@theme {
+  --color-primary: #DC2626; /* Crimson Red for Urgency */
+  --color-primary-dark: #B91C1C;
+  --color-accent: #10B981;  /* Emerald for "Claim Deal" Success */
+  --color-warning: #F59E0B; /* Gold for FOMO tags */
+  
+  --color-surface: #F8FAFC; /* Light slate bg */
+  --color-neutral: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-muted: #64748B;
+  --color-text: #0F172A;
+
+  /* Friendly, round e-commerce typography */
+  --font-sans: 'Poppins', 'Inter', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { 
+  font-family: var(--font-sans); 
+  color: var(--color-text); 
+  background-color: var(--color-surface); 
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 { 
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.deal-card {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.deal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}

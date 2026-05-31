@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const title = 'AI Tool Finder — Find the AI For That (2026)';
+const description = 'Answer a few questions and get personalized AI tool recommendations. Find the perfect AI for your needs.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16 max-w-3xl">
+    <h1 class="text-3xl font-bold mb-4">AI Tool Finder</h1>
+    <p class="text-muted mb-10">Answer a few quick questions and we'll recommend the best AI tools for your specific needs.</p>
+
+    <div class="bg-neutral rounded-xl p-8 text-center">
+      <p class="text-lg font-medium mb-6">What do you need an AI tool for?</p>
+      <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
+        <a href="/en/categories/writing/" class="p-4 bg-white border rounded-lg hover:border-primary transition-colors text-text font-medium">✍️ Writing</a>
+        <a href="/en/categories/image/" class="p-4 bg-white border rounded-lg hover:border-primary transition-colors text-text font-medium">🎨 Images</a>
+        <a href="/en/categories/coding/" class="p-4 bg-white border rounded-lg hover:border-primary transition-colors text-text font-medium">💻 Coding</a>
+        <a href="/en/categories/productivity/" class="p-4 bg-white border rounded-lg hover:border-primary transition-colors text-text font-medium">⚡ Productivity</a>
+      </div>
+      <p class="text-sm text-muted mt-8">Or <a href="/en/categories/" class="text-primary">browse all categories →</a></p>
+    </div>
+  </section>
+</BaseLayout>

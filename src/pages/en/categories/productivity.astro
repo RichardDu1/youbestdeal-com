@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Card from '../../../components/Card.astro';
+
+const title = 'Best AI Productivity Tools (2026) — Find the AI For That';
+const description = 'Compare AI productivity tools for automation, meeting summaries, task management, and workflow optimization.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16">
+    <h1 class="text-3xl font-bold mb-2">AI Productivity Tools</h1>
+    <p class="text-muted mb-10 max-w-2xl">Automate repetitive tasks, summarize meetings, organize your notes, and optimize your workflow with AI.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Card title="Notion AI" description="AI-powered workspace that combines notes, docs, and project management" href="/en/reviews/notion-ai/" rating={4.3} price="10" />
+      <Card title="Otter.ai" description="Real-time meeting transcription and automated summaries" href="/en/reviews/otter-ai/" rating={4.5} price="Free" />
+      <Card title="Zapier AI" description="Connect apps and automate workflows with AI-powered integrations" href="/en/reviews/zapier-ai/" rating={4.4} price="20" />
+    </div>
+  </section>
+</BaseLayout>

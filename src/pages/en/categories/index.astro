@@ -1,0 +1,24 @@
+---
+// Categories index
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Card from '../../../components/Card.astro';
+
+const title = 'AI Tool Categories — Find the AI For That (2026)';
+const description = 'Browse AI tools by category: writing, image generation, coding, productivity, and more.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16">
+    <h1 class="text-3xl font-bold mb-8 text-center">AI Tool Categories</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <Card title="AI Writing" description="Content generation, copywriting, paraphrasing, and SEO writing tools" href="/en/categories/writing/" />
+      <Card title="AI Image" description="Text-to-image, photo editing, logo generation, and design tools" href="/en/categories/image/" />
+      <Card title="AI Coding" description="Code completion, refactoring, debugging, and documentation tools" href="/en/categories/coding/" />
+      <Card title="AI Productivity" description="Meeting summaries, task automation, note-taking, and workflow tools" href="/en/categories/productivity/" />
+      <Card title="AI Video" description="Video generation, editing, transcription, and avatar tools" href="/en/categories/video/" />
+      <Card title="AI Audio" description="Text-to-speech, music generation, podcast editing, and voice cloning" href="/en/categories/audio/" />
+    </div>
+  </section>
+</BaseLayout>

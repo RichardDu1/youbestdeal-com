@@ -1,0 +1,97 @@
+---
+// Root path — returns 200 with canonical pointing to /en/ (CRITICAL: no redirect)
+// Per BUILD_GUIDE.md Section V
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Card from '../components/Card.astro';
+
+const pageTitle = 'Find the AI For That — Discover the Best AI Tools for Every Task (2026)';
+const pageDescription = 'Honest reviews and detailed comparisons of the best AI tools for writing, image generation, coding, productivity, and more. Find the right AI for every task.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="https://findtheaiforthat.com/en/"
+  schema={{
+    type: 'WebSite',
+    data: { description: pageDescription },
+  }}
+>
+  <Hero
+    title="Find the Perfect AI Tool for Any Task"
+    subtitle="Discover, compare, and choose from hundreds of AI tools. Honest reviews, no hype."
+    cta={{ label: 'Explore Tools', href: '/en/categories/' }}
+    ctaSecondary={{ label: 'Latest Reviews', href: '/en/latest/' }}
+  />
+
+  <!-- Featured Categories -->
+  <section class="container py-16">
+    <h2 class="text-2xl font-bold mb-8 text-center">Popular AI Tool Categories</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <Card
+        title="AI Writing Tools"
+        description="Generate articles, emails, social posts, and more with the best AI writers"
+        href="/en/categories/writing/"
+        tag="Popular"
+      />
+      <Card
+        title="AI Image Generators"
+        description="Create stunning visuals from text prompts — art, logos, photos, illustrations"
+        href="/en/categories/image/"
+        tag="Trending"
+      />
+      <Card
+        title="AI Coding Assistants"
+        description="Write code faster with AI-powered autocomplete, refactoring, and debugging"
+        href="/en/categories/coding/"
+        tag="Essential"
+      />
+      <Card
+        title="AI Productivity"
+        description="Automate workflows, summarize meetings, organize notes with AI"
+        href="/en/categories/productivity/"
+        tag="New"
+      />
+    </div>
+  </section>
+
+  <!-- Latest Reviews -->
+  <section class="bg-neutral py-16">
+    <div class="container">
+      <h2 class="text-2xl font-bold mb-8 text-center">Latest AI Tool Reviews</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card
+          title="ChatGPT Review (2026)"
+          description="Is ChatGPT still the best AI assistant? Our honest review after 2+ years of daily use"
+          href="/en/reviews/chatgpt/"
+          rating={4.5}
+          price="Free"
+        />
+        <Card
+          title="Claude vs ChatGPT (2026)"
+          description="Side-by-side comparison of the top two AI assistants — which one wins?"
+          href="/en/compare/claude-vs-chatgpt/"
+          rating={4.7}
+          price="Free"
+        />
+        <Card
+          title="Midjourney V7 Review"
+          description="The latest Midjourney update raises the bar for AI image generation again"
+          href="/en/reviews/midjourney-v7/"
+          rating={4.8}
+          price="10"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container py-16 text-center">
+    <h2 class="text-2xl font-bold mb-4">Don't Know Which AI Tool to Pick?</h2>
+    <p class="text-muted mb-6 max-w-xl mx-auto">Use our AI Tool Finder to get personalized recommendations based on your needs.</p>
+    <a href="/en/finder/" class="inline-flex items-center px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors">
+      Try the AI Tool Finder →
+    </a>
+  </section>
+</BaseLayout>

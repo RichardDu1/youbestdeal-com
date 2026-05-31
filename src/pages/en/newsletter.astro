@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const title = 'Newsletter — Find the AI For That (2026)';
+const description = 'Get the latest AI tool reviews and comparisons delivered to your inbox. No spam, unsubscribe anytime.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16 max-w-3xl text-center">
+    <h1 class="text-3xl font-bold mb-4">Stay Ahead of the AI Curve</h1>
+    <p class="text-muted mb-8 max-w-lg mx-auto">Weekly roundup of the best new AI tools, honest reviews, and practical tips. No spam — unsubscribe anytime.</p>
+    <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      <input type="email" placeholder="you@example.com" required class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary" />
+      <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors">Subscribe</button>
+    </form>
+  </section>
+</BaseLayout>

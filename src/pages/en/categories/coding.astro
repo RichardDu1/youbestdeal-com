@@ -1,0 +1,22 @@
+---
+// AI Coding category page
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Card from '../../../components/Card.astro';
+
+const title = 'Best AI Coding Assistants (2026) — Find the AI For That';
+const description = 'Compare the best AI coding tools for autocomplete, debugging, refactoring, and documentation. Boost your dev productivity.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16">
+    <h1 class="text-3xl font-bold mb-2">AI Coding Assistants</h1>
+    <p class="text-muted mb-10 max-w-2xl">Write code faster and smarter with AI-powered coding tools. From autocomplete to full-file generation.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Card title="GitHub Copilot" description="The most popular AI coding assistant, deeply integrated with VS Code" href="/en/reviews/github-copilot/" rating={4.6} price="10" />
+      <Card title="Cursor" description="AI-first IDE that's redefining how developers write code" href="/en/reviews/cursor/" rating={4.8} price="20" />
+      <Card title="Claude Code" description="Anthropic's agentic coding tool for terminal-based development" href="/en/reviews/claude-code/" rating={4.5} price="Free" />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+// Breadcrumb.astro — Auto-generate breadcrumbs from URL path
+const path = Astro.url.pathname;
+const segments = path
+  .split('/')
+  .filter(Boolean)
+  .filter((s) => s !== 'en'); // skip locale prefix
+
+const breadcrumbs = segments.map((seg, i) => {
+  const href = '/en/' + segments.slice(0, i + 1).join('/') + '/';
+  const name = seg
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return { name, href };
+});
+---
+
+{breadcrumbs.length > 0 && (
+  <nav aria-label="Breadcrumb" class="container py-3">
+    <ol class="flex items-center gap-1.5 text-sm text-muted">
+      <li>
+        <a href="/en/" class="hover:text-primary transition-colors">Home</a>
+      </li>
+      {breadcrumbs.map((crumb, i) => (
+        <li class="flex items-center gap-1.5">
+          <span>/</span>
+          {i === breadcrumbs.length - 1 ? (
+            <span class="text-text font-medium" aria-current="page">{crumb.name}</span>
+          ) : (
+            <a href={crumb.href} class="hover:text-primary transition-colors">{crumb.name}</a>
+          )}
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

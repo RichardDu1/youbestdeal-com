@@ -1,0 +1,56 @@
+---
+// Footer.astro â€?4-column footer with legal links
+---
+
+<footer class="bg-gray-900 text-gray-300 mt-20 pt-16 pb-8">
+  <div class="container">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <!-- Brand -->
+      <div>
+        <h3 class="text-white font-bold text-lg mb-3">You Best Deal</h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          Find the best deals online. Reviews, comparisons, and savings tips.
+        </p>
+      </div>
+
+      <!-- Categories -->
+      <div>
+        <h4 class="text-white font-semibold mb-3">Categories</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/en/categories/writing/" class="hover:text-white transition-colors">AI Writing</a></li>
+          <li><a href="/en/categories/image/" class="hover:text-white transition-colors">AI Image</a></li>
+          <li><a href="/en/categories/coding/" class="hover:text-white transition-colors">AI Coding</a></li>
+          <li><a href="/en/categories/productivity/" class="hover:text-white transition-colors">AI Productivity</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h4 class="text-white font-semibold mb-3">Resources</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/en/blog/" class="hover:text-white transition-colors">Blog</a></li>
+          <li><a href="/en/compare/" class="hover:text-white transition-colors">Compare Tools</a></li>
+          <li><a href="/en/latest/" class="hover:text-white transition-colors">Latest Tools</a></li>
+          <li><a href="/en/newsletter/" class="hover:text-white transition-colors">Newsletter</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="text-white font-semibold mb-3">Company</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/en/about/" class="hover:text-white transition-colors">About</a></li>
+          <li><a href="/en/contact/" class="hover:text-white transition-colors">Contact</a></li>
+          <li><a href="/en/privacy/" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="/en/terms/" class="hover:text-white transition-colors">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-gray-700 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+      <p>&copy; {new Date().getFullYear()} You Best Deal. All rights reserved.</p>
+      <p>We may earn a commission from affiliate links at no extra cost to you.</p>
+    </div>
+  </div>
+</footer>

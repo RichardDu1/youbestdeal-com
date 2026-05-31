@@ -1,0 +1,19 @@
+---
+// Contact page
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const title = 'Contact Us — Find the AI For That (2026)';
+const description = 'Get in touch with the Find the AI For That team. Questions, suggestions, or tool submissions welcome.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16 max-w-3xl">
+    <h1 class="text-3xl font-bold mb-6">Contact Us</h1>
+    <div class="prose prose-lg max-w-none text-muted space-y-4">
+      <p>Have a question, suggestion, or want us to review your AI tool? We'd love to hear from you.</p>
+      <p>Email us at <strong>hello@findtheaiforthat.com</strong></p>
+    </div>
+  </section>
+</BaseLayout>

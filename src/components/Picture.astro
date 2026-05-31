@@ -1,0 +1,44 @@
+---
+// Picture.astro — Responsive <picture> with WebP srcset + JPG fallback
+export interface Props {
+  src: string;
+  alt: string;
+  sizes?: string;
+  widths?: number[];
+  loading?: 'lazy' | 'eager';
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  sizes = '100vw',
+  widths = [800, 1200, 1920],
+  loading = 'lazy',
+  class: className = '',
+} = Astro.props;
+
+// Derive base path (strip extension)
+const base = src.replace(/\.(jpg|jpeg|png|webp)$/, '');
+const ext = src.split('.').pop() || 'jpg';
+---
+
+<picture>
+  <source
+    srcset={widths.map((w) => `${base}-${w}w.webp ${w}w`).join(', ')}
+    sizes={sizes}
+    type="image/webp"
+  />
+  <source
+    srcset={widths.map((w) => `${base}-${w}w.${ext} ${w}w`).join(', ')}
+    sizes={sizes}
+    type={`image/${ext === 'jpg' ? 'jpeg' : ext}`}
+  />
+  <img
+    src={`${base}-800w.${ext}`}
+    alt={alt}
+    loading={loading}
+    class={className}
+    style="max-width: 100%; height: auto;"
+  />
+</picture>

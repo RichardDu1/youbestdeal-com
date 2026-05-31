@@ -1,0 +1,22 @@
+---
+// AI Writing category page
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Card from '../../../components/Card.astro';
+
+const title = 'Best AI Writing Tools (2026) — Find the AI For That';
+const description = 'Compare the best AI writing tools for articles, emails, social media, copywriting, and SEO. Honest reviews and pricing.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Breadcrumb />
+  <section class="container py-16">
+    <h1 class="text-3xl font-bold mb-2">AI Writing Tools</h1>
+    <p class="text-muted mb-10 max-w-2xl">Generate articles, emails, social posts, ad copy, and more with these AI writing assistants.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Card title="ChatGPT" description="The most versatile AI writing assistant, capable of any text task" href="/en/reviews/chatgpt/" rating={4.5} price="Free" />
+      <Card title="Claude" description="Anthropic's AI assistant, excellent for long-form content and analysis" href="/en/reviews/claude/" rating={4.7} price="Free" />
+      <Card title="Jasper" description="Purpose-built AI copywriter for marketers and content teams" href="/en/reviews/jasper/" rating={4.3} price="49" />
+    </div>
+  </section>
+</BaseLayout>
